@@ -38,7 +38,15 @@ public class UP4DAR_SNMP
     }
 
   
-
+    static char getOIDChar(int i)
+    {
+        if (i < 10)
+        {
+            return (char) (48 + i);
+        }
+        
+        return (char) (65 + i - 10); 
+    }
    
     
     enum SNMP_DataType { OctetString, Integer };

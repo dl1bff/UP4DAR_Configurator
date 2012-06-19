@@ -25,6 +25,8 @@ import java.util.logging.Logger;
 import javax.swing.SwingWorker;
 import javax.swing.event.ListDataEvent;
 import javax.swing.event.ListDataListener;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 
 /**
@@ -130,12 +132,20 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         inputVoltage = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        callSignExt = new javax.swing.JTextField();
         dvPanel = new javax.swing.JPanel();
         rptSettingsPanel = new javax.swing.JPanel();
         rptSpinner = new javax.swing.JSpinner();
         jLabel9 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         rptTable = new javax.swing.JTable();
+        rptDirectCheckbox = new javax.swing.JCheckBox();
+        yourCallSettingsPanel = new javax.swing.JPanel();
+        yourCallSpinner = new javax.swing.JSpinner();
+        jLabel12 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        yourCallTable = new javax.swing.JTable();
         phyPanel = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         phyTxDelay = new javax.swing.JTextField();
@@ -145,6 +155,8 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
         phyRxInv = new javax.swing.JCheckBox();
         phyTxDcShift = new javax.swing.JTextField();
         phySoftwareVersion = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        phyRxDevFactor = new javax.swing.JTextField();
         audioPanel = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
@@ -177,7 +189,6 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("UP4DAR Configurator");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setPreferredSize(new java.awt.Dimension(900, 700));
 
         networkListFrame.setTitle("UP4DAR boards on the local network");
         networkListFrame.setVisible(true);
@@ -231,6 +242,7 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
         configFrame.setNormalBounds(new java.awt.Rectangle(10, 15, 880, 590));
         configFrame.setVisible(false);
 
+        callSign.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         callSign.setText("NOCALL");
         callSign.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -249,6 +261,21 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
 
         inputVoltage.setText("voltage");
 
+        jLabel11.setText("Ext.");
+
+        callSignExt.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        callSignExt.setText("jTextField1");
+        callSignExt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                callSignExtActionPerformed(evt);
+            }
+        });
+        callSignExt.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                callSignExtFocusLost(evt);
+            }
+        });
+
         javax.swing.GroupLayout allgemeinPanelLayout = new javax.swing.GroupLayout(allgemeinPanel);
         allgemeinPanel.setLayout(allgemeinPanelLayout);
         allgemeinPanelLayout.setHorizontalGroup(
@@ -257,14 +284,18 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                 .addContainerGap()
                 .addGroup(allgemeinPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(allgemeinPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(callSign, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(allgemeinPanelLayout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(18, 18, 18)
-                        .addComponent(inputVoltage)))
-                .addContainerGap(707, Short.MAX_VALUE))
+                        .addComponent(inputVoltage))
+                    .addGroup(allgemeinPanelLayout.createSequentialGroup()
+                        .addGroup(allgemeinPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel11))
+                        .addGap(18, 18, 18)
+                        .addGroup(allgemeinPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(callSign)
+                            .addComponent(callSignExt))))
+                .addContainerGap(705, Short.MAX_VALUE))
         );
         allgemeinPanelLayout.setVerticalGroup(
             allgemeinPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -277,7 +308,11 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                 .addGroup(allgemeinPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(callSign, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addContainerGap(386, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(allgemeinPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(callSignExt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(355, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("allgemein", allgemeinPanel);
@@ -293,7 +328,7 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
 
         jLabel9.setText("Use this repeater setting:");
 
-        rptTable.setFont(new java.awt.Font("Courier New", 0, 11)); // NOI18N
+        rptTable.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         rptTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 { new Integer(1), "DB0DF  B", "DB0DF  G"},
@@ -326,6 +361,13 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
         rptTable.getColumnModel().getColumn(0).setResizable(false);
         rptTable.getColumnModel().getColumn(0).setPreferredWidth(8);
 
+        rptDirectCheckbox.setText("direct QSO (don't use repeater)");
+        rptDirectCheckbox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rptDirectCheckboxActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout rptSettingsPanelLayout = new javax.swing.GroupLayout(rptSettingsPanel);
         rptSettingsPanel.setLayout(rptSettingsPanelLayout);
         rptSettingsPanelLayout.setHorizontalGroup(
@@ -333,22 +375,100 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
             .addGroup(rptSettingsPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(rptSettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(rptSettingsPanelLayout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addGap(18, 18, 18)
                         .addComponent(rptSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(rptDirectCheckbox))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         rptSettingsPanelLayout.setVerticalGroup(
             rptSettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, rptSettingsPanelLayout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(rptDirectCheckbox)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addGroup(rptSettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(rptSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        yourCallSettingsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("YOUR Call"));
+
+        yourCallSpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, 10, 1));
+        yourCallSpinner.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                yourCallSpinnerStateChanged(evt);
+            }
+        });
+
+        jLabel12.setText("Use this YOUR Call setting:");
+
+        yourCallTable.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        yourCallTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                { new Integer(1), "CQCQCQ"},
+                { new Integer(2), ""},
+                { new Integer(3), null},
+                { new Integer(4), null},
+                { new Integer(5), null},
+                { new Integer(6), ""},
+                { new Integer(7), null},
+                { new Integer(8), null},
+                { new Integer(9), null},
+                {null, null}
+            },
+            new String [] {
+                "#", "YOUR Call"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        yourCallTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane2.setViewportView(yourCallTable);
+        yourCallTable.getColumnModel().getColumn(0).setResizable(false);
+        yourCallTable.getColumnModel().getColumn(0).setPreferredWidth(8);
+
+        javax.swing.GroupLayout yourCallSettingsPanelLayout = new javax.swing.GroupLayout(yourCallSettingsPanel);
+        yourCallSettingsPanel.setLayout(yourCallSettingsPanelLayout);
+        yourCallSettingsPanelLayout.setHorizontalGroup(
+            yourCallSettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(yourCallSettingsPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(yourCallSettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(yourCallSettingsPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel12)
+                        .addGap(18, 18, 18)
+                        .addComponent(yourCallSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        yourCallSettingsPanelLayout.setVerticalGroup(
+            yourCallSettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, yourCallSettingsPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(yourCallSettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(yourCallSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -358,7 +478,9 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
             dvPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dvPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(rptSettingsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(dvPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(rptSettingsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(yourCallSettingsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(592, Short.MAX_VALUE))
         );
         dvPanelLayout.setVerticalGroup(
@@ -366,7 +488,9 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
             .addGroup(dvPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(rptSettingsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(321, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(yourCallSettingsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("DV", dvPanel);
@@ -422,13 +546,31 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
 
         phySoftwareVersion.setText("jLabel6");
 
+        jLabel10.setText("RxDeviation");
+
+        phyRxDevFactor.setText("jTextField1");
+        phyRxDevFactor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                phyRxDevFactorActionPerformed(evt);
+            }
+        });
+        phyRxDevFactor.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                phyRxDevFactorFocusLost(evt);
+            }
+        });
+
         javax.swing.GroupLayout phyPanelLayout = new javax.swing.GroupLayout(phyPanel);
         phyPanel.setLayout(phyPanelLayout);
         phyPanelLayout.setHorizontalGroup(
             phyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(phyPanelLayout.createSequentialGroup()
                 .addGap(37, 37, 37)
-                .addGroup(phyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(phyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(phyPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(phyRxDevFactor))
                     .addComponent(phySoftwareVersion)
                     .addComponent(phyRxInv)
                     .addGroup(phyPanelLayout.createSequentialGroup()
@@ -460,9 +602,13 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                     .addComponent(jLabel5))
                 .addGap(18, 18, 18)
                 .addComponent(phyRxInv)
-                .addGap(42, 42, 42)
+                .addGap(18, 18, 18)
+                .addGroup(phyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(phyRxDevFactor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(78, 78, 78)
                 .addComponent(phySoftwareVersion)
-                .addContainerGap(298, Short.MAX_VALUE))
+                .addContainerGap(224, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("PHY", phyPanel);
@@ -1022,6 +1168,109 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
         }
     }//GEN-LAST:event_rptSpinnerStateChanged
 
+    private void phyRxDevFactorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phyRxDevFactorActionPerformed
+        try
+        {          
+            snmp.snmpSetInteger("290", Integer.parseInt( phyRxDevFactor.getText()));
+     
+        } catch (Exception ex)
+        {
+            // perhaps format was wrong
+        }
+        
+        try
+        {
+            phyRxDevFactor.setText( Integer.toString( snmp.snmpGetInteger("290") ));
+                    
+        } catch (Exception ex)
+        {
+            Logger.getLogger(UP4DAR_Configurator.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_phyRxDevFactorActionPerformed
+
+    private void phyRxDevFactorFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_phyRxDevFactorFocusLost
+        phyRxDevFactorActionPerformed(null);
+    }//GEN-LAST:event_phyRxDevFactorFocusLost
+
+    private void callSignExtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_callSignExtActionPerformed
+        try
+        {
+            snmp.snmpSetString("750", callSignExt.getText());
+     
+        } catch (Exception ex)
+        {
+            // perhaps format was wrong
+        }
+        
+        try
+        {
+            callSignExt.setText(snmp.snmpGetString("750"));
+            
+        } catch (Exception ex)
+        {
+            Logger.getLogger(UP4DAR_Configurator.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_callSignExtActionPerformed
+
+    private void callSignExtFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_callSignExtFocusLost
+        callSignExtActionPerformed(null);
+    }//GEN-LAST:event_callSignExtFocusLost
+
+    private void rptDirectCheckboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rptDirectCheckboxActionPerformed
+        try
+        {
+            int value;
+            
+            if (rptDirectCheckbox.isSelected())
+            {
+                value = 1;
+            }
+            else
+            {
+                value = 0;
+            }
+            
+            snmp.snmpSetInteger("760", value);
+     
+        } catch (Exception ex)
+        {
+            // perhaps format was wrong
+        }
+        
+        try
+        {
+            rptDirectCheckbox.setSelected(snmp.snmpGetInteger("760") == 1);
+            
+            rptSpinner.setEnabled(! rptDirectCheckbox.isSelected());
+            // rptTable.setEnabled(! rptDirectCheckbox.isSelected());
+            
+                    
+        } catch (Exception ex)
+        {
+            Logger.getLogger(UP4DAR_Configurator.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_rptDirectCheckboxActionPerformed
+
+    private void yourCallSpinnerStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_yourCallSpinnerStateChanged
+        try
+        {          
+            snmp.snmpSetInteger("730", (Integer) yourCallSpinner.getValue());
+     
+        } catch (Exception ex)
+        {
+            // perhaps format was wrong
+        }
+        
+        try
+        {
+            yourCallSpinner.setValue(snmp.snmpGetInteger("730"));
+                    
+        } catch (Exception ex)
+        {
+            Logger.getLogger(UP4DAR_Configurator.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_yourCallSpinnerStateChanged
+
     
     class Task extends SwingWorker<Void, Void> {
         
@@ -1044,8 +1293,16 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
             {
                 callSign.setText( snmp.snmpGetString("30"));
                 progIncr();
-               
-                inputVoltage.setText( Double.toString(snmp.snmpGetInteger("40") * 0.001) + "V" );
+                
+                callSignExt.setText(snmp.snmpGetString("750"));
+                progIncr();
+                
+                rptDirectCheckbox.setSelected(snmp.snmpGetInteger("760") == 1);
+                rptSpinner.setEnabled(! rptDirectCheckbox.isSelected());
+                // rptTable.setEnabled(! rptDirectCheckbox.isSelected());
+                progIncr();
+              
+                inputVoltage.setText( String.format("%10.2fV", (snmp.snmpGetInteger("40") * 0.001) ));
                 progIncr();
                 
                 phyRxInv.setSelected(snmp.snmpGetInteger("250") == 1);
@@ -1075,17 +1332,83 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                 rptSpinner.setValue(snmp.snmpGetInteger("710"));
                 progIncr();
                 
+                phyRxDevFactor.setText( Integer.toString( snmp.snmpGetInteger("290") ));
+                progIncr();
+                
+                yourCallSpinner.setValue(snmp.snmpGetInteger("730"));
+                progIncr();
+                
                 TableModel tm = rptTable.getModel();
                 int i;
                 
                 for(i=0; i < 5; i++)
                 {
-                    tm.setValueAt( snmp.snmpGetString("7212" + (i+1)), i, 1);
-                    tm.setValueAt( snmp.snmpGetString("7213" + (i+1)), i, 2);
+                    tm.setValueAt( snmp.snmpGetString("7212" + UP4DAR_SNMP.getOIDChar(i+1)), i, 1);
+                    tm.setValueAt( snmp.snmpGetString("7213" + UP4DAR_SNMP.getOIDChar(i+1)), i, 2);
                     progIncr();
                 }
                 
+                tm.addTableModelListener(new TableModelListener() {
+
+                   
+                    @Override
+                    public void tableChanged(TableModelEvent tme) {
+                        int col = tme.getColumn();
+                        
+                        int row = tme.getFirstRow();
+                        
+                        try
+                        {                       
+                            snmp.snmpSetString("721" + UP4DAR_SNMP.getOIDChar(col+1) + 
+                                     UP4DAR_SNMP.getOIDChar(row+1), 
+                                    (String) rptTable.getModel().getValueAt(row, col) );
+                            
+                          //  rptTable.getModel().setValueAt( snmp.snmpGetString("721" +
+                          //            (col+1) + "" + (row+1)), row, col);
+
+                        } catch (Exception ex)
+                        {
+                            Logger.getLogger(UP4DAR_Configurator.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                     }
+                    }
+                );
                 
+                tm = yourCallTable.getModel();
+                
+                for(i=0; i < 10; i++)
+                {
+                    tm.setValueAt( "" + (i+1), i, 0 );
+                    tm.setValueAt( snmp.snmpGetString("7412" + 
+                            UP4DAR_SNMP.getOIDChar(i+1)), i, 1);
+                    progIncr();
+                }
+                
+                tm.addTableModelListener(new TableModelListener() {
+
+                   
+                    @Override
+                    public void tableChanged(TableModelEvent tme) {
+                        int col = tme.getColumn();
+                        
+                        int row = tme.getFirstRow();
+                        
+                        try
+                        {                       
+                            snmp.snmpSetString("741" + UP4DAR_SNMP.getOIDChar(col+1) + 
+                                    UP4DAR_SNMP.getOIDChar(row+1), 
+                                    (String) yourCallTable.getModel().getValueAt(row, col) );
+                            
+                          //  rptTable.getModel().setValueAt( snmp.snmpGetString("721" +
+                          //            (col+1) + "" + (row+1)), row, col);
+
+                        } catch (Exception ex)
+                        {
+                            Logger.getLogger(UP4DAR_Configurator.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                     }
+                    }
+                );
                 
                 
             } catch (Exception ex)
@@ -1211,6 +1534,7 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
     javax.swing.JList boardList;
     javax.swing.JScrollPane boardListScrollPane;
     javax.swing.JTextField callSign;
+    javax.swing.JTextField callSignExt;
     javax.swing.JInternalFrame configFrame;
     javax.swing.JButton connectButton;
     javax.swing.JMenuItem contentMenuItem;
@@ -1225,6 +1549,9 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
     javax.swing.JMenu helpMenu;
     javax.swing.JLabel inputVoltage;
     javax.swing.JLabel jLabel1;
+    javax.swing.JLabel jLabel10;
+    javax.swing.JLabel jLabel11;
+    javax.swing.JLabel jLabel12;
     javax.swing.JLabel jLabel2;
     javax.swing.JLabel jLabel3;
     javax.swing.JLabel jLabel4;
@@ -1235,6 +1562,7 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
     javax.swing.JLabel jLabel9;
     javax.swing.JPanel jPanel4;
     javax.swing.JScrollPane jScrollPane1;
+    javax.swing.JScrollPane jScrollPane2;
     javax.swing.JTabbedPane jTabbedPane1;
     javax.swing.JButton loadCancelButton;
     javax.swing.JProgressBar loadProgressBar;
@@ -1245,6 +1573,7 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
     javax.swing.JMenuItem openMenuItem;
     javax.swing.JMenuItem pasteMenuItem;
     javax.swing.JPanel phyPanel;
+    javax.swing.JTextField phyRxDevFactor;
     javax.swing.JCheckBox phyRxInv;
     javax.swing.JLabel phySoftwareVersion;
     javax.swing.JTextField phyTxDcShift;
@@ -1253,12 +1582,16 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
     javax.swing.JTextField pttBeepDuration;
     javax.swing.JTextField pttBeepFrequency;
     javax.swing.JTextField pttBeepVolume;
+    javax.swing.JCheckBox rptDirectCheckbox;
     javax.swing.JPanel rptSettingsPanel;
     javax.swing.JSpinner rptSpinner;
     javax.swing.JTable rptTable;
     javax.swing.JMenuItem saveAsMenuItem;
     javax.swing.JMenuItem saveMenuItem;
     javax.swing.JButton saveToFlash;
+    javax.swing.JPanel yourCallSettingsPanel;
+    javax.swing.JSpinner yourCallSpinner;
+    javax.swing.JTable yourCallTable;
     // End of variables declaration//GEN-END:variables
 
     
