@@ -1742,63 +1742,15 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
         txmsgTextFieldActionPerformed(null);
     }//GEN-LAST:event_txmsgTextFieldFocusLost
 
-    TableModelListener  rptTableListener;
-    TableModelListener  yourCallTableListener;
+    
     
     void initTableListener()
     {
         
     
-     rptTableListener = new TableModelListener() {
-
-                   
-                    @Override
-                    public void tableChanged(TableModelEvent tme) {
-                        int col = tme.getColumn();
-                        
-                        int row = tme.getFirstRow();
-                        
-                        try
-                        {                       
-                            snmp.snmpSetString("721" + UP4DAR_SNMP.getOIDChar(col+1) + 
-                                     UP4DAR_SNMP.getOIDChar(row+1), 
-                                    (String) rptTable.getModel().getValueAt(row, col) );
-                            
-                          //  rptTable.getModel().setValueAt( snmp.snmpGetString("721" +
-                          //            (col+1) + "" + (row+1)), row, col);
-
-                        } catch (Exception ex)
-                        {
-                            Logger.getLogger(UP4DAR_Configurator.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                     }
-                    };
+   
     
-             
-        yourCallTableListener =  new TableModelListener() {
-
-                   
-                    @Override
-                    public void tableChanged(TableModelEvent tme) {
-                        int col = tme.getColumn();
-                        
-                        int row = tme.getFirstRow();
-                        
-                        try
-                        {                       
-                            snmp.snmpSetString("741" + UP4DAR_SNMP.getOIDChar(col+1) + 
-                                    UP4DAR_SNMP.getOIDChar(row+1), 
-                                    (String) yourCallTable.getModel().getValueAt(row, col) );
-                            
-                          //  rptTable.getModel().setValueAt( snmp.snmpGetString("721" +
-                          //            (col+1) + "" + (row+1)), row, col);
-
-                        } catch (Exception ex)
-                        {
-                            Logger.getLogger(UP4DAR_Configurator.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                     }
-                    };
+      
     }
             
     class Task extends SwingWorker<Void, Void> {
@@ -1898,7 +1850,7 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                 TableModel tm = rptTable.getModel();
                 int i;
                 
-                tm.removeTableModelListener( rptTableListener  );
+                // tm.removeTableModelListener( rptTableListener  );
                 
                 for(i=0; i < 5; i++)
                 {
@@ -1907,11 +1859,36 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                     progIncr();
                 }
                 
-                tm.addTableModelListener( rptTableListener  );
+                tm.addTableModelListener( new TableModelListener() {
+
+                   
+                    @Override
+                    public void tableChanged(TableModelEvent tme) {
+                        int col = tme.getColumn();
+                        
+                        int row = tme.getFirstRow();
+                        
+                        System.out.println("test");
+                        
+                        try
+                        {                       
+                            snmp.snmpSetString("721" + UP4DAR_SNMP.getOIDChar(col+1) + 
+                                     UP4DAR_SNMP.getOIDChar(row+1), 
+                                    (String) rptTable.getModel().getValueAt(row, col) );
+                            
+                          //  rptTable.getModel().setValueAt( snmp.snmpGetString("721" +
+                          //            (col+1) + "" + (row+1)), row, col);
+
+                        } catch (Exception ex)
+                        {
+                            Logger.getLogger(UP4DAR_Configurator.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                     }
+                    }  );
                 
                 tm = yourCallTable.getModel();
                 
-                tm.removeTableModelListener( yourCallTableListener  );
+                // tm.removeTableModelListener( yourCallTableListener  );
                 
                 for(i=0; i < 10; i++)
                 {
@@ -1921,7 +1898,30 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                     progIncr();
                 }
                 
-                tm.addTableModelListener( yourCallTableListener  );
+                tm.addTableModelListener( new TableModelListener() {
+
+                   
+                    @Override
+                    public void tableChanged(TableModelEvent tme) {
+                        int col = tme.getColumn();
+                        
+                        int row = tme.getFirstRow();
+                        
+                        try
+                        {                       
+                            snmp.snmpSetString("741" + UP4DAR_SNMP.getOIDChar(col+1) + 
+                                    UP4DAR_SNMP.getOIDChar(row+1), 
+                                    (String) yourCallTable.getModel().getValueAt(row, col) );
+                            
+                          //  rptTable.getModel().setValueAt( snmp.snmpGetString("721" +
+                          //            (col+1) + "" + (row+1)), row, col);
+
+                        } catch (Exception ex)
+                        {
+                            Logger.getLogger(UP4DAR_Configurator.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                     }
+                    }  );
                 
                 
             } catch (Exception ex)
