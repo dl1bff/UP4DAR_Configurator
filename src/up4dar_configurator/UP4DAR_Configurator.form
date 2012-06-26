@@ -164,7 +164,7 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="boardListScrollPane" alignment="1" pref="294" max="32767" attributes="0"/>
+                          <Component id="boardListScrollPane" alignment="1" pref="284" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               <Component id="connectButton" min="-2" max="-2" attributes="0"/>
@@ -178,7 +178,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="boardListScrollPane" pref="53" max="32767" attributes="0"/>
+                      <Component id="boardListScrollPane" pref="50" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="connectButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -290,7 +290,7 @@
                                   <Component id="callSign" max="32767" attributes="0"/>
                                   <Component id="callSignExt" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="699" max="32767" attributes="0"/>
+                              <EmptySpace pref="689" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -307,7 +307,7 @@
                                   <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="callSignExt" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="355" max="32767" attributes="0"/>
+                              <EmptySpace pref="349" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -370,7 +370,7 @@
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="rptSettingsPanel" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="35" max="32767" attributes="0"/>
+                                      <EmptySpace pref="25" max="32767" attributes="0"/>
                                       <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="txmsgTextField" min="-2" pref="250" max="-2" attributes="0"/>
@@ -398,7 +398,7 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="52" max="32767" attributes="0"/>
+                              <EmptySpace pref="40" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -687,7 +687,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -708,8 +708,13 @@
                                       </Group>
                                   </Group>
                                   <Component id="phySoftwareVersion" min="-2" pref="474" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="phySerialNumTextField" max="32767" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <EmptySpace pref="358" max="32767" attributes="0"/>
+                              <EmptySpace pref="348" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -740,7 +745,12 @@
                               <Component id="phyRxInv" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
                               <Component id="phySoftwareVersion" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="232" max="32767" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="phySerialNumTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="195" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -815,6 +825,17 @@
                         <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="phyRxDevFactorFocusLost"/>
                       </Events>
                     </Component>
+                    <Component class="javax.swing.JTextField" name="phySerialNumTextField">
+                      <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
+                        <Property name="text" type="java.lang.String" value="jTextField1"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel21">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="S/N:"/>
+                      </Properties>
+                    </Component>
                   </SubComponents>
                 </Container>
                 <Container class="javax.swing.JPanel" name="audioPanel">
@@ -835,7 +856,7 @@
                                   <Component id="jPanel4" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="681" max="32767" attributes="0"/>
+                              <EmptySpace pref="671" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -846,7 +867,7 @@
                               <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="269" max="32767" attributes="0"/>
+                              <EmptySpace pref="261" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1074,7 +1095,7 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="576" max="32767" attributes="0"/>
+                              <EmptySpace pref="566" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1093,7 +1114,7 @@
                                   <Component id="dprsTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="381" max="32767" attributes="0"/>
+                              <EmptySpace pref="377" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1168,7 +1189,7 @@
                                   <Component id="contrastSlider" min="-2" max="-2" attributes="0"/>
                                   <Component id="backlightSlider" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="553" max="32767" attributes="0"/>
+                              <EmptySpace pref="543" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1185,7 +1206,7 @@
                                   <Component id="contrastSlider" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="390" max="32767" attributes="0"/>
+                              <EmptySpace pref="386" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1230,7 +1251,7 @@
                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="inputVoltage" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="740" max="32767" attributes="0"/>
+                              <EmptySpace pref="730" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1242,7 +1263,7 @@
                                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="inputVoltage" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="479" max="32767" attributes="0"/>
+                              <EmptySpace pref="473" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1298,7 +1319,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="loadProgressLabel" min="-2" pref="194" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="120" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="110" max="32767" attributes="0"/>
                           </Group>
                           <Component id="loadProgressBar" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
@@ -1319,7 +1340,7 @@
                       <Component id="loadProgressBar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="loadCancelButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="18" max="32767" attributes="0"/>
+                      <EmptySpace pref="17" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
