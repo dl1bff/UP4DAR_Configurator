@@ -693,7 +693,7 @@ public class UP4DAR_SNMP
     
     final static String defaultCommunityString = "public";
     
-    public String snmpGetString(String oid)
+    public byte[] snmpGetBinaryString(String oid)
             throws Exception
     {   
         SNMP_Request req = new SNMP_Request( SNMP_DataType.OctetString,
@@ -707,13 +707,18 @@ public class UP4DAR_SNMP
             
             if (res.getDataType() == SNMP_DataType.OctetString)
             {
-                return new String (res.getData());
+                return res.getData();
             }
         }
  
         throw new Exception("getString failed, oid=" + oid);
     }
     
+    public String snmpGetString(String oid)
+            throws Exception
+    {   
+        return new String(snmpGetBinaryString(oid));
+    }
     
     
     void snmpSetString(String oid, String data) throws Exception   
