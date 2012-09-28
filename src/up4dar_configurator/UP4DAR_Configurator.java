@@ -33,11 +33,20 @@ import javax.swing.table.TableModel;
  *
  * @author Michael Dirska <dl1bff@mdx.de>
  */
+
+
+
 public class UP4DAR_Configurator extends javax.swing.JFrame 
     implements java.beans.PropertyChangeListener
 {
 
-  
+    public final String version = "C.1.00.01";
+    
+    public String getMainWindowTitle()
+    {
+        return "UP4DAR Configurator - " + version;
+    }
+    
 
     private UP4DARbroadcastRX bcRX;
 
@@ -209,7 +218,7 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
         aboutMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("UP4DAR Configurator");
+        setTitle(getMainWindowTitle());
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         networkListFrame.setTitle("UP4DAR boards on the local network");
