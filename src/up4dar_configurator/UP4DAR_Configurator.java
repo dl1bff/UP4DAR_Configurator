@@ -18,8 +18,11 @@
 package up4dar_configurator;
 
 import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.net.InetAddress;
 import java.net.SocketException;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.SwingWorker;
@@ -37,10 +40,9 @@ import javax.swing.table.TableModel;
 
 
 public class UP4DAR_Configurator extends javax.swing.JFrame 
-    implements java.beans.PropertyChangeListener
 {
 
-    public final String version = "C.1.00.02";
+    public final String version = "C.1.00.03";
     
     public String getMainWindowTitle()
     {
@@ -128,6 +130,7 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        updateFileChooser = new javax.swing.JFileChooser();
         desktopPane = new javax.swing.JDesktopPane();
         networkListFrame = new javax.swing.JInternalFrame();
         boardListScrollPane = new javax.swing.JScrollPane();
@@ -202,11 +205,16 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
         loadProgressBar = new javax.swing.JProgressBar();
         loadProgressLabel = new javax.swing.JLabel();
         loadCancelButton = new javax.swing.JButton();
+        updateFrame = new javax.swing.JInternalFrame();
+        updateProgressBar = new javax.swing.JProgressBar();
+        updateLabel1 = new javax.swing.JLabel();
+        updateOKButton = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         openMenuItem = new javax.swing.JMenuItem();
         saveMenuItem = new javax.swing.JMenuItem();
         saveAsMenuItem = new javax.swing.JMenuItem();
+        updateMenuItem = new javax.swing.JMenuItem();
         exitMenuItem = new javax.swing.JMenuItem();
         editMenu = new javax.swing.JMenu();
         cutMenuItem = new javax.swing.JMenuItem();
@@ -217,10 +225,12 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
         contentMenuItem = new javax.swing.JMenuItem();
         aboutMenuItem = new javax.swing.JMenuItem();
 
+        updateFileChooser.setDialogTitle("Select Firmware File");
+        updateFileChooser.setFileFilter(null);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle(getMainWindowTitle());
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setPreferredSize(new java.awt.Dimension(900, 600));
         setResizable(false);
 
         networkListFrame.setTitle("UP4DAR boards on the local network");
@@ -263,13 +273,13 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
             networkListFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(networkListFrameLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(boardListScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                .addComponent(boardListScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(connectButton)
                 .addContainerGap())
         );
 
-        networkListFrame.setBounds(10, 10, 320, 130);
+        networkListFrame.setBounds(10, 10, 320, 138);
         desktopPane.add(networkListFrame, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         configFrame.setNormalBounds(new java.awt.Rectangle(10, 15, 880, 372));
@@ -1063,11 +1073,50 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                 .addComponent(loadProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(loadCancelButton)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
-        loadingFrame.setBounds(200, 200, 340, 120);
+        loadingFrame.setBounds(200, 200, 340, 136);
         desktopPane.add(loadingFrame, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        updateFrame.setTitle("Firmware Update");
+        updateFrame.setVisible(false);
+
+        updateLabel1.setText("Transferring file to UP4DAR board...");
+
+        updateOKButton.setText("OK");
+        updateOKButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateOKButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout updateFrameLayout = new javax.swing.GroupLayout(updateFrame.getContentPane());
+        updateFrame.getContentPane().setLayout(updateFrameLayout);
+        updateFrameLayout.setHorizontalGroup(
+            updateFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(updateFrameLayout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addGroup(updateFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(updateOKButton)
+                    .addComponent(updateProgressBar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
+                    .addComponent(updateLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
+        );
+        updateFrameLayout.setVerticalGroup(
+            updateFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(updateFrameLayout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(updateLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(updateProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
+                .addComponent(updateOKButton)
+                .addContainerGap(91, Short.MAX_VALUE))
+        );
+
+        updateFrame.setBounds(90, 300, 336, 290);
+        desktopPane.add(updateFrame, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         fileMenu.setMnemonic('f');
         fileMenu.setText("File");
@@ -1087,6 +1136,15 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
         saveAsMenuItem.setDisplayedMnemonicIndex(5);
         saveAsMenuItem.setEnabled(false);
         fileMenu.add(saveAsMenuItem);
+
+        updateMenuItem.setText("Firmware Update");
+        updateMenuItem.setEnabled(false);
+        updateMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateMenuItemActionPerformed(evt);
+            }
+        });
+        fileMenu.add(updateMenuItem);
 
         exitMenuItem.setMnemonic('x');
         exitMenuItem.setText("Exit");
@@ -1222,6 +1280,7 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
         configFrame.setVisible(false);
         connectButton.setEnabled( false );
         boardList.clearSelection();
+        System.exit(0);
     }//GEN-LAST:event_ExitButtonActionPerformed
 
     private void phyTxDelayActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_phyTxDelayActionPerformed
@@ -1770,6 +1829,181 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
 
     
     
+    
+    
+    
+    class FirmwareUpdateTask extends SwingWorker<Void, Void> {
+        
+        
+        boolean errorOccured = false;
+        java.io.File firmwareFile;
+        int num_blocks;
+        
+        public FirmwareUpdateTask( java.io.File f )
+        {
+            super();
+            firmwareFile = f;
+            
+            long n = firmwareFile.length() / 512;
+        
+            if (n > 1000)
+            {
+                num_blocks = 1000;
+                
+              
+            }
+            else
+            {
+                num_blocks = (int) n;
+            }
+            
+        }
+        
+        void progressUpdate(int block)
+        {
+            int percent = ((block + 1) * 100) / num_blocks;
+            setProgress(percent);
+        }
+        /*
+         * Main task. Executed in background thread.
+         */
+        @Override
+        public Void doInBackground()
+        {
+            
+            try
+            {
+                java.io.FileInputStream f = new java.io.FileInputStream(firmwareFile);
+                    
+                int i;
+                
+                byte[] buf = new byte[514];
+                
+                for (i=0; i < num_blocks; i++)
+                {
+                    if (f.read(buf, 2, 512) != 512)
+                    {
+                        errorOccured = true;
+                        break;
+                    }
+                    
+                    int last_block_bit = 0;
+                    
+                    if (i == (num_blocks-1))
+                    {
+                        last_block_bit = 0x80;
+                    }
+                
+                    buf[0] = (byte) ((i >> 8) | last_block_bit);
+                    buf[1] = (byte) (i & 0xFF);
+                    
+                    snmp.snmpSetBinaryString("150", buf );
+                    progressUpdate(i);
+                }
+                
+                byte[] result = snmp.snmpGetBinaryString("150");
+                
+                if (result.length != 26)
+                {
+                    errorOccured = true;
+                }
+                else
+                {
+                    int imageType = result[0] & 0x3F;
+                    
+                    if ((imageType < 1) || (imageType > 4))
+                    {
+                        errorOccured = true;
+                    }
+                }
+                
+                f.close();
+                
+            } catch (Exception ex)
+            {
+                Logger.getLogger(UP4DAR_Configurator.class.getName()).log(Level.SEVERE, null, ex);
+                errorOccured = true;
+            }
+           
+            return null;
+        }
+
+        /*
+         * Executed in event dispatching thread
+         */
+        @Override
+        public void done()
+        {
+            // setCursor(null); //turn off the wait cursor
+            updateOKButton.setEnabled(true);
+            
+            if (errorOccured)
+            {
+                updateLabel1.setText("ERROR: ");
+            }
+            else
+            {
+                updateLabel1.setText("Transfer completed.");
+            }
+           
+        }
+    }
+    
+    
+    
+    
+    FirmwareUpdateTask firmwareUpdateTask;
+    
+    private void updateMenuItemActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_updateMenuItemActionPerformed
+    {//GEN-HEADEREND:event_updateMenuItemActionPerformed
+       
+        updateFileChooser.setFileFilter(new  javax.swing.filechooser.FileFilter() {
+            @Override
+                public boolean accept(java.io.File f) {
+                    return f.getName().toLowerCase().endsWith(".bin") || f.isDirectory();
+                }
+            @Override
+                public String getDescription() {
+                    return "Firmware Files (*.bin)";
+                }
+            }); 
+        
+        int returnVal = updateFileChooser.showOpenDialog(this);
+        if  (returnVal == javax.swing.JFileChooser.APPROVE_OPTION) {
+        System.out.println("You chose to open this file: " +
+                updateFileChooser.getSelectedFile().length());
+        
+          updateLabel1.setText("Transferring file to UP4DAR board...");
+            
+          updateOKButton.setEnabled(false);
+          updateFrame.setVisible(true);
+          
+          firmwareUpdateTask = new FirmwareUpdateTask(updateFileChooser.getSelectedFile());
+          firmwareUpdateTask.addPropertyChangeListener( new PropertyChangeListener() {
+
+            @Override
+            public void propertyChange(PropertyChangeEvent pce)
+            {
+                if (pce.getPropertyName().equals("progress"))
+                {
+                    int progress = (Integer) pce.getNewValue();
+                    updateProgressBar.setValue(progress);
+                } 
+            }
+           });
+           firmwareUpdateTask.execute();
+         }
+      
+    }//GEN-LAST:event_updateMenuItemActionPerformed
+
+    private void updateOKButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_updateOKButtonActionPerformed
+    {//GEN-HEADEREND:event_updateOKButtonActionPerformed
+        
+        updateFrame.setVisible(false);
+    }//GEN-LAST:event_updateOKButtonActionPerformed
+
+    
+    
     void initTableListener()
     {
         
@@ -1995,6 +2229,9 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
             if (!errorOccured)
             {
                 configFrame.setVisible(true);
+                
+                updateMenuItem.setEnabled(true);
+                
             }
             else
             {
@@ -2003,8 +2240,12 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
         }
     }
     
+    
+    
+    
     Task task;
 
+    /*
     @Override
     public void propertyChange(PropertyChangeEvent evt)
     {
@@ -2014,6 +2255,8 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
             loadProgressBar.setValue(progress);
         } 
     }
+    */
+    
     
     void doConnect ( InetAddress a ) throws Exception
     {
@@ -2032,7 +2275,18 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
         // setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
       
         task = new Task();
-        task.addPropertyChangeListener(this);
+        task.addPropertyChangeListener( new PropertyChangeListener() {
+
+            @Override
+            public void propertyChange(PropertyChangeEvent pce)
+            {
+                if (pce.getPropertyName().equals("progress"))
+                {
+                    int progress = (Integer) pce.getNewValue();
+                    loadProgressBar.setValue(progress);
+                } 
+            }
+        });
         task.execute();
             
        
@@ -2172,6 +2426,12 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
     javax.swing.JTextField standbyBeepFrequency;
     javax.swing.JTextField standbyBeepVolume;
     javax.swing.JTextField txmsgTextField;
+    javax.swing.JFileChooser updateFileChooser;
+    javax.swing.JInternalFrame updateFrame;
+    javax.swing.JLabel updateLabel1;
+    javax.swing.JMenuItem updateMenuItem;
+    javax.swing.JButton updateOKButton;
+    javax.swing.JProgressBar updateProgressBar;
     javax.swing.JPanel yourCallSettingsPanel;
     javax.swing.JSpinner yourCallSpinner;
     javax.swing.JTable yourCallTable;

@@ -125,7 +125,7 @@ public class UP4DAR_SNMP
             this.reqType = reqType;
             this.dataType = dataType;
             
-            binData = new byte[200];
+            binData = new byte[600];
             oidBytes = new byte[get_oid_len(oid)];
                         
             byte cmnty[] = communityString.getBytes();
@@ -721,10 +721,8 @@ public class UP4DAR_SNMP
     }
     
     
-    void snmpSetString(String oid, String data) throws Exception   
+    void snmpSetBinaryString(String oid, byte[] dataBytes) throws Exception   
     {
-        
-        byte[] dataBytes = data.getBytes();
         
         SNMP_Request req = new SNMP_Request( SNMP_DataType.OctetString,
                 SNMP_ReqType.SetRequest,  oid, defaultCommunityString,
@@ -733,7 +731,12 @@ public class UP4DAR_SNMP
         SNMP_Response res =  sendAndRecv(req);
         
         if (res == null)        
-            throw new Exception("setString failed, oid=" + oid + " data=" + data);
+            throw new Exception("setString failed, oid=" + oid );
+    }
+    
+    void snmpSetString(String oid, String data) throws Exception   
+    {
+        snmpSetBinaryString(oid, data.getBytes());
     }
     
     public int snmpGetInteger(String oid)
