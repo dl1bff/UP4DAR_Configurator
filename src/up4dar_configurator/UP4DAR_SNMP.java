@@ -307,13 +307,15 @@ public class UP4DAR_SNMP
         }
         
     }
+    
+    public final static int snmpDefaultTimeout = 800;
         
     public String snmpConnect() throws Exception
     {
         try
         {
             socket = new DatagramSocket();
-            socket.setSoTimeout(200); // 200ms
+            socket.setSoTimeout(snmpDefaultTimeout); 
             
         } catch (SocketException ex)
         {
@@ -647,12 +649,61 @@ public class UP4DAR_SNMP
        
     }
     
+    boolean timeOutOccured = true;
     
     SNMP_Response sendAndRecv(SNMP_Request req)
     {
         DatagramPacket dp = new DatagramPacket(req.binData, req.udpPacketLen, addr, 161);        
         byte[] recvBuf = new byte[200];
         DatagramPacket drx = new DatagramPacket(recvBuf, recvBuf.length);
+        
+        
+        if (timeOutOccured)  // if a timeout occured before
+        {
+            // flush input "queue"
+            
+            try
+            {
+                socket.setSoTimeout(5);
+            } 
+            catch (IOException ex)
+            {
+                Logger.getLogger(UP4DAR_SNMP.class.getName()).log(Level.SEVERE, null, ex);
+                return null;
+            }
+            
+            boolean done = false;
+            
+            while (!done)
+            {
+                try
+                {
+                    socket.receive(drx);
+
+                } catch (SocketTimeoutException ex)
+                {
+                    done = true;
+                }
+                catch (IOException ex)
+                {
+                    Logger.getLogger(UP4DAR_SNMP.class.getName()).log(Level.SEVERE, null, ex);
+                    return null;
+                }
+            }
+            
+            try
+            {
+                socket.setSoTimeout(snmpDefaultTimeout);
+
+            } 
+            catch (IOException ex)
+            {
+                Logger.getLogger(UP4DAR_SNMP.class.getName()).log(Level.SEVERE, null, ex);
+                return null;
+            }
+            
+            timeOutOccured = false;
+        }
         
         int retryCounter = 3;
         
@@ -678,6 +729,7 @@ public class UP4DAR_SNMP
             {
                 // retry
                 //System.out.println("Retry: " + retryCounter);
+                timeOutOccured = true;
             }
             catch (IOException ex)
             {
