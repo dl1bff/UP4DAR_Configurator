@@ -42,7 +42,7 @@ import javax.swing.table.TableModel;
 public class UP4DAR_Configurator extends javax.swing.JFrame 
 {
 
-    public final String version = "C.1.00.04";
+    public final String version = "C.1.00.05";
     
     public String getMainWindowTitle()
     {
@@ -2154,6 +2154,7 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                 
                 tm.addTableModelListener( new TableModelListener() {
 
+                    boolean ignoreEvents = false;
                    
                     @Override
                     public void tableChanged(TableModelEvent tme) {
@@ -2161,20 +2162,25 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                         
                         int row = tme.getFirstRow();
                         
-                        System.out.println("test");
+                        // System.out.println("test");
                         
-                        try
-                        {                       
-                            snmp.snmpSetString("721" + UP4DAR_SNMP.getOIDChar(col+1) + 
-                                     UP4DAR_SNMP.getOIDChar(row+1), 
-                                    (String) rptTable.getModel().getValueAt(row, col) );
-                            
-                          //  rptTable.getModel().setValueAt( snmp.snmpGetString("721" +
-                          //            (col+1) + "" + (row+1)), row, col);
-
-                        } catch (Exception ex)
+                        if (!ignoreEvents)
                         {
-                            Logger.getLogger(UP4DAR_Configurator.class.getName()).log(Level.SEVERE, null, ex);
+                            try
+                            {                       
+                                snmp.snmpSetString("721" + UP4DAR_SNMP.getOIDChar(col+1) + 
+                                        UP4DAR_SNMP.getOIDChar(row+1), 
+                                        (String) rptTable.getModel().getValueAt(row, col) );
+                                
+                                ignoreEvents = true;
+                                rptTable.getModel().setValueAt( snmp.snmpGetString("721" +
+                                        (col+1) + "" + (row+1)), row, col);
+
+                            } catch (Exception ex)
+                            {
+                                Logger.getLogger(UP4DAR_Configurator.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                            ignoreEvents = false;
                         }
                      }
                     }  );
@@ -2193,6 +2199,7 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                 
                 tm.addTableModelListener( new TableModelListener() {
 
+                    boolean ignoreEvents = false;
                    
                     @Override
                     public void tableChanged(TableModelEvent tme) {
@@ -2200,18 +2207,23 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                         
                         int row = tme.getFirstRow();
                         
-                        try
-                        {                       
-                            snmp.snmpSetString("741" + UP4DAR_SNMP.getOIDChar(col+1) + 
-                                    UP4DAR_SNMP.getOIDChar(row+1), 
-                                    (String) yourCallTable.getModel().getValueAt(row, col) );
-                            
-                          //  rptTable.getModel().setValueAt( snmp.snmpGetString("721" +
-                          //            (col+1) + "" + (row+1)), row, col);
-
-                        } catch (Exception ex)
+                        if (!ignoreEvents)
                         {
-                            Logger.getLogger(UP4DAR_Configurator.class.getName()).log(Level.SEVERE, null, ex);
+                            try
+                            {                       
+                                snmp.snmpSetString("741" + UP4DAR_SNMP.getOIDChar(col+1) + 
+                                        UP4DAR_SNMP.getOIDChar(row+1), 
+                                        (String) yourCallTable.getModel().getValueAt(row, col) );
+
+                                ignoreEvents = true;
+                                rptTable.getModel().setValueAt( snmp.snmpGetString("741" +
+                                        (col+1) + "" + (row+1)), row, col);
+
+                            } catch (Exception ex)
+                            {
+                                Logger.getLogger(UP4DAR_Configurator.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                            ignoreEvents = false;
                         }
                      }
                     }  );
@@ -2281,6 +2293,9 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
         loadProgressLabel.setText("Loading data...");
         
         loadingFrame.setVisible(true);
+        
+       
+        
 
         // setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
       
