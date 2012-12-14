@@ -42,7 +42,7 @@ import javax.swing.table.TableModel;
 public class UP4DAR_Configurator extends javax.swing.JFrame 
 {
 
-    public final String version = "C.1.00.05";
+    public final String version = "C.1.00.06";
     
     public String getMainWindowTitle()
     {
@@ -1236,7 +1236,11 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
     }//GEN-LAST:event_contentMenuItemActionPerformed
 
     private void boardListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_boardListValueChanged
-        connectButton.setEnabled( boardList.getSelectedIndex() >= 0 );
+        
+        if ((snmp == null) && (boardList.getSelectedIndex() >= 0))
+        {
+            connectButton.setEnabled( true );
+        }
     }//GEN-LAST:event_boardListValueChanged
 
     private void callSignActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_callSignActionPerformed
