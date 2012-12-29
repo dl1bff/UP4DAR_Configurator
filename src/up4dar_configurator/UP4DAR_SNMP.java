@@ -30,10 +30,12 @@ public class UP4DAR_SNMP
 {
     DatagramSocket socket;
     InetAddress addr;
+    String communityString;
     
-    UP4DAR_SNMP(InetAddress addr)
+    UP4DAR_SNMP(InetAddress addr, String communityString)
     {
         this.addr = addr;
+        this.communityString = communityString;
         socket = null;
     }
 
@@ -743,13 +745,12 @@ public class UP4DAR_SNMP
         return null; // retryCounter == 0
     }
     
-    final static String defaultCommunityString = "public";
     
     public byte[] snmpGetBinaryString(String oid)
             throws Exception
     {   
         SNMP_Request req = new SNMP_Request( SNMP_DataType.OctetString,
-                SNMP_ReqType.GetRequest,  oid, defaultCommunityString, null );
+                SNMP_ReqType.GetRequest,  oid, communityString, null );
         
         SNMP_Response res =  sendAndRecv(req);
         
@@ -777,7 +778,7 @@ public class UP4DAR_SNMP
     {
         
         SNMP_Request req = new SNMP_Request( SNMP_DataType.OctetString,
-                SNMP_ReqType.SetRequest,  oid, defaultCommunityString,
+                SNMP_ReqType.SetRequest,  oid, communityString,
                     dataBytes);
         
         SNMP_Response res =  sendAndRecv(req);
@@ -795,7 +796,7 @@ public class UP4DAR_SNMP
             throws Exception
     {   
         SNMP_Request req = new SNMP_Request( SNMP_DataType.Integer,
-                SNMP_ReqType.GetRequest,  oid, defaultCommunityString, null );
+                SNMP_ReqType.GetRequest,  oid, communityString, null );
         
         SNMP_Response res =  sendAndRecv(req);
         
@@ -825,7 +826,7 @@ public class UP4DAR_SNMP
         }                
         
         SNMP_Request req = new SNMP_Request( SNMP_DataType.Integer,
-                SNMP_ReqType.SetRequest,  oid, defaultCommunityString,
+                SNMP_ReqType.SetRequest,  oid, communityString,
                     dataBytes);
         
         SNMP_Response res =  sendAndRecv(req);

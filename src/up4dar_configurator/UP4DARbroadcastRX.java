@@ -36,9 +36,12 @@ public class UP4DARbroadcastRX extends AbstractListModel
 {
     class Client
     {
-        public Client(InetAddress addr)
+        public Client(InetAddress addr, String communityString)
         {
             ip = addr;
+            this.communityString = communityString;
+            timeToLive = 600;
+            callSign = "UP4DAR-Board";
         }
         
         
@@ -63,6 +66,7 @@ public class UP4DARbroadcastRX extends AbstractListModel
         String callSign;
         int timeToLive;
         InetAddress ip;
+        String communityString;
     }
     
     private final ArrayList<Client> clients;
@@ -132,6 +136,16 @@ public class UP4DARbroadcastRX extends AbstractListModel
         return clients.get(i).ip;
     }
     
+    public String getCmnty(int i)
+    {
+        return clients.get(i).communityString;
+    }
+    
+    public void addClient( InetAddress a, String cmnty )
+    {
+        clients.add( new Client( a, cmnty ));
+    }
+    
     DatagramSocket s;
     
     public void startThreads() throws SocketException
@@ -158,42 +172,53 @@ public class UP4DARbroadcastRX extends AbstractListModel
 
 	    while (true)
             {	
-		byte p[] = new byte[8];
+		byte p[] = new byte[20];
 		
 		DatagramPacket pp = new DatagramPacket(p, p.length);
 
                 s.receive(pp);
                 
                 boolean somethingChanged = false;
-		
-		synchronized (clients)
+                
+                if (pp.getLength() >= 8)
                 {
-                    Client c;
-                    String callSign = new String(p);
-                    Client c2 = new Client(pp.getAddress());
+                    String communityString = "public";
                     
-                    if (clients.contains(c2))
+                    if (pp.getLength() >= 20)
                     {
-                        c = clients.get(clients.indexOf(c2));
-                        
-                        if (! c.callSign.equals(callSign))
+                        communityString = new String(p, 8, 12, "UTF-8");
+                    }
+		
+                    synchronized (clients)
+                    {
+                        Client c;
+                        String callSign = new String(p, 0, 8, "UTF-8");
+                        Client c2 = new Client(pp.getAddress(), communityString);
+
+                        if (clients.contains(c2))
                         {
+                            c = clients.get(clients.indexOf(c2));
+
+                            if (! c.callSign.equals(callSign))
+                            {
+                                somethingChanged = true;
+                            }
+                        }
+                        else
+                        {
+                            c = c2;
+                            clients.add(c);
                             somethingChanged = true;
                         }
+                        c.callSign = callSign;
+                        c.timeToLive = 10;
                     }
-                    else
+
+                    if (somethingChanged)
                     {
-                        c = c2;
-                        clients.add(c);
-                        somethingChanged = true;
+                        fireContentsChanged(this, 0, 0);
                     }
-                    c.callSign = callSign;
-                    c.timeToLive = 10;
-                }
                 
-                if (somethingChanged)
-                {
-                    fireContentsChanged(this, 0, 0);
                 }
 	    } // while
 		
@@ -213,8 +238,16 @@ public class UP4DARbroadcastRX extends AbstractListModel
          {
              c =  clients.get(i);
          }
+         
+         String communityStringPresent = "";
+         
+         if (! c.communityString.equals("public"))
+         {
+             communityStringPresent = " *";
+         }
                   
-         return c.callSign  + " " + c.ip.toString();
+         return c.callSign  + " " + c.ip.toString() + 
+                 communityStringPresent;
       
     }
 

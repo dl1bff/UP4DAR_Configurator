@@ -42,7 +42,7 @@ import javax.swing.table.TableModel;
 public class UP4DAR_Configurator extends javax.swing.JFrame 
 {
 
-    public final String version = "C.1.00.06";
+    public final String version = "C.1.00.07";
     
     public String getMainWindowTitle()
     {
@@ -115,6 +115,10 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
         
         snmp = null;
         
+        if (cmdlineIP != null)
+        {
+            bcRX.addClient(cmdlineIP, cmdlineCmnty);
+        }
         
         initComponents();
        
@@ -199,6 +203,8 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
         debugPanel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         inputVoltage = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        snmpCmnty = new javax.swing.JTextField();
         ExitButton = new javax.swing.JButton();
         saveToFlash = new javax.swing.JButton();
         loadingFrame = new javax.swing.JInternalFrame();
@@ -274,13 +280,13 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
             networkListFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(networkListFrameLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(boardListScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
+                .addComponent(boardListScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(connectButton)
                 .addContainerGap())
         );
 
-        networkListFrame.setBounds(10, 10, 310, 131);
+        networkListFrame.setBounds(10, 10, 320, 146);
         desktopPane.add(networkListFrame, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         configFrame.setNormalBounds(new java.awt.Rectangle(10, 15, 880, 372));
@@ -330,7 +336,7 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                 .addGroup(callsignPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(callSign)
                     .addComponent(callSignExt))
-                .addContainerGap(699, Short.MAX_VALUE))
+                .addContainerGap(689, Short.MAX_VALUE))
         );
         callsignPanelLayout.setVerticalGroup(
             callsignPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -343,7 +349,7 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                 .addGroup(callsignPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(callSignExt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(129, Short.MAX_VALUE))
+                .addContainerGap(126, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Callsign", callsignPanel);
@@ -532,7 +538,7 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                         .addComponent(jLabel18)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txmsgTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(286, Short.MAX_VALUE))
+                .addContainerGap(276, Short.MAX_VALUE))
         );
         dvPanelLayout.setVerticalGroup(
             dvPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -545,7 +551,7 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                 .addGroup(dvPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txmsgTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel18))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("DV", dvPanel);
@@ -651,7 +657,7 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                                     .addComponent(phyTxDelay, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(70, 70, 70)
                                     .addComponent(phySoftwareVersion, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(125, Short.MAX_VALUE))
+                .addContainerGap(115, Short.MAX_VALUE))
         );
         phyPanelLayout.setVerticalGroup(
             phyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -679,7 +685,7 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                     .addComponent(jLabel10))
                 .addGap(18, 18, 18)
                 .addComponent(phyRxInv)
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addContainerGap(99, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("PHY", phyPanel);
@@ -849,7 +855,7 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(485, Short.MAX_VALUE))
+                .addContainerGap(475, Short.MAX_VALUE))
         );
         audioPanelLayout.setVerticalGroup(
             audioPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -858,7 +864,7 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                 .addGroup(audioPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(158, Short.MAX_VALUE))
+                .addContainerGap(154, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Audio", audioPanel);
@@ -909,7 +915,7 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                         .addGroup(dprsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(dprsSymbolComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(dprsTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(576, Short.MAX_VALUE))
+                .addContainerGap(566, Short.MAX_VALUE))
         );
         dprsPanelLayout.setVerticalGroup(
             dprsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -924,7 +930,7 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                 .addGroup(dprsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(dprsTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14))
-                .addContainerGap(155, Short.MAX_VALUE))
+                .addContainerGap(154, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("D-PRS", dprsPanel);
@@ -958,7 +964,7 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                 .addGroup(displayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(contrastSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(backlightSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(553, Short.MAX_VALUE))
+                .addContainerGap(543, Short.MAX_VALUE))
         );
         displayPanelLayout.setVerticalGroup(
             displayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -971,7 +977,7 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                 .addGroup(displayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(contrastSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel20))
-                .addContainerGap(164, Short.MAX_VALUE))
+                .addContainerGap(163, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Display", displayPanel);
@@ -980,16 +986,25 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
 
         inputVoltage.setText("voltage");
 
+        jLabel22.setText("SNMP Community String");
+
+        snmpCmnty.setEditable(false);
+        snmpCmnty.setText("jTextField1");
+
         javax.swing.GroupLayout debugPanelLayout = new javax.swing.GroupLayout(debugPanel);
         debugPanel.setLayout(debugPanelLayout);
         debugPanelLayout.setHorizontalGroup(
             debugPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(debugPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
+                .addGroup(debugPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel22)
+                    .addComponent(jLabel2))
                 .addGap(18, 18, 18)
-                .addComponent(inputVoltage)
-                .addContainerGap(740, Short.MAX_VALUE))
+                .addGroup(debugPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(inputVoltage)
+                    .addComponent(snmpCmnty, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(336, Short.MAX_VALUE))
         );
         debugPanelLayout.setVerticalGroup(
             debugPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -998,7 +1013,11 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                 .addGroup(debugPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(inputVoltage))
-                .addContainerGap(253, Short.MAX_VALUE))
+                .addGap(38, 38, 38)
+                .addGroup(debugPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel22)
+                    .addComponent(snmpCmnty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(192, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Debug", debugPanel);
@@ -1037,7 +1056,7 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                 .addGroup(configFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(saveToFlash)
                     .addComponent(ExitButton))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         configFrame.setBounds(10, 15, 880, 372);
@@ -1074,10 +1093,10 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                 .addComponent(loadProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(loadCancelButton)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
-        loadingFrame.setBounds(200, 200, 330, 131);
+        loadingFrame.setBounds(200, 200, 340, 144);
         desktopPane.add(loadingFrame, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         updateFrame.setTitle("Firmware Update");
@@ -1119,12 +1138,12 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                 .addComponent(updateProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(updateLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addComponent(updateOKButton)
                 .addContainerGap())
         );
 
-        updateFrame.setBounds(90, 300, 329, 283);
+        updateFrame.setBounds(90, 300, 339, 298);
         desktopPane.add(updateFrame, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         fileMenu.setMnemonic('f');
@@ -1277,7 +1296,8 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
         {
             try
             {
-                doConnect( bcRX.getIP(boardList.getSelectedIndex() ) );
+                doConnect( bcRX.getIP(boardList.getSelectedIndex()),
+                       bcRX.getCmnty(boardList.getSelectedIndex() ));
                 
             } catch (Exception ex)
             {
@@ -2284,14 +2304,17 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
     */
     
     
-    void doConnect ( InetAddress a ) throws Exception
+    void doConnect ( InetAddress a, String cmnty ) throws Exception
     {
         // System.out.println(a);
         
-        snmp = new UP4DAR_SNMP(a);
+        
+        
+        snmp = new UP4DAR_SNMP(a, cmnty);
         
         String h = snmp.snmpConnect();
         
+        snmpCmnty.setText(cmnty);
        
         loadProgressBar.setValue(0);
         loadProgressLabel.setText("Loading data...");
@@ -2323,7 +2346,8 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
     
     
     
-    
+    public static InetAddress cmdlineIP = null;
+    public static String cmdlineCmnty = null;
     
     
     
@@ -2358,6 +2382,19 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
         }
         //</editor-fold>
 
+        if (args.length == 2) // exactly two arguments
+        {
+            try
+            {
+                cmdlineIP = InetAddress.getByName(args[0]);
+                cmdlineCmnty = args[1];
+            }
+            catch (java.net.UnknownHostException e)
+            {
+                cmdlineIP = null;
+            }
+        }
+        
         /*
          * Create and display the form
          */
@@ -2413,6 +2450,7 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
     javax.swing.JLabel jLabel2;
     javax.swing.JLabel jLabel20;
     javax.swing.JLabel jLabel21;
+    javax.swing.JLabel jLabel22;
     javax.swing.JLabel jLabel3;
     javax.swing.JLabel jLabel4;
     javax.swing.JLabel jLabel5;
@@ -2451,6 +2489,7 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
     javax.swing.JMenuItem saveAsMenuItem;
     javax.swing.JMenuItem saveMenuItem;
     javax.swing.JButton saveToFlash;
+    javax.swing.JTextField snmpCmnty;
     javax.swing.JTextField standbyBeepDuration;
     javax.swing.JTextField standbyBeepFrequency;
     javax.swing.JTextField standbyBeepVolume;
