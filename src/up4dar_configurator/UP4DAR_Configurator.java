@@ -42,7 +42,7 @@ import javax.swing.table.TableModel;
 public class UP4DAR_Configurator extends javax.swing.JFrame 
 {
 
-    public final String version = "C.1.00.07";
+    public final String version = "C.1.00.08";
     
     public String getMainWindowTitle()
     {
@@ -2240,7 +2240,7 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                                         (String) yourCallTable.getModel().getValueAt(row, col) );
 
                                 ignoreEvents = true;
-                                rptTable.getModel().setValueAt( snmp.snmpGetString("741" +
+                                yourCallTable.getModel().setValueAt( snmp.snmpGetString("741" +
                                         (col+1) + "" + (row+1)), row, col);
 
                             } catch (Exception ex)
