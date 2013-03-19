@@ -130,13 +130,14 @@
       <Connection code="getMainWindowTitle()" type="code"/>
     </Property>
     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-      <Color id="Standardcursor"/>
+      <Color id="Default Cursor"/>
     </Property>
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="menuBar"/>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -198,7 +199,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="boardListScrollPane" pref="62" max="32767" attributes="0"/>
+                      <Component id="boardListScrollPane" pref="90" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="connectButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -313,7 +314,7 @@
                                   <Component id="callSign" max="32767" attributes="0"/>
                                   <Component id="callSignExt" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="689" max="32767" attributes="0"/>
+                              <EmptySpace pref="683" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -330,7 +331,7 @@
                                   <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="callSignExt" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="126" max="32767" attributes="0"/>
+                              <EmptySpace pref="122" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -398,7 +399,7 @@
                                       <Component id="txmsgTextField" min="-2" pref="250" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="276" max="32767" attributes="0"/>
+                              <EmptySpace pref="264" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -415,7 +416,7 @@
                                   <Component id="txmsgTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="18" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -737,7 +738,7 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="115" max="32767" attributes="0"/>
+                              <EmptySpace pref="113" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -773,7 +774,7 @@
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="phyRxInv" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="99" max="32767" attributes="0"/>
+                              <EmptySpace pref="84" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -878,7 +879,7 @@
                               <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="475" max="32767" attributes="0"/>
+                              <EmptySpace pref="445" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -890,7 +891,7 @@
                                   <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
                                   <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="154" max="32767" attributes="0"/>
+                              <EmptySpace pref="135" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1105,20 +1106,21 @@
                           <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="dprsEnableCheckBox" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="dprsSymbolComboBox" min="-2" pref="100" max="-2" attributes="0"/>
-                                          <Component id="dprsTextField" min="-2" pref="123" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
+                                  <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel23" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel24" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel25" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="566" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="dprsTextField" pref="123" max="32767" attributes="0"/>
+                                  <Component id="dprsModeComboBox" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="dprsSymbolComboBox" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="aprsSSIDComboBox" max="32767" attributes="0"/>
+                                  <Component id="beaconComboBox" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="508" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1126,31 +1128,36 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="dprsEnableCheckBox" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel23" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="dprsModeComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="dprsSymbolComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="dprsTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="dprsTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="154" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel24" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="aprsSSIDComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel25" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="beaconComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="122" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JCheckBox" name="dprsEnableCheckBox">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="enable outgoing D-PRS Messages"/>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dprsEnableCheckBoxActionPerformed"/>
-                      </Events>
-                    </Component>
                     <Component class="javax.swing.JComboBox" name="dprsSymbolComboBox">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
@@ -1170,7 +1177,7 @@
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel13">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="D-PRS symbol"/>
+                        <Property name="text" type="java.lang.String" value="D-PRS/APRS symbol"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="dprsTextField">
@@ -1184,8 +1191,88 @@
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel14">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="D-PRS Text (max 13 chars)"/>
+                        <Property name="text" type="java.lang.String" value="D-PRS/APRS Text (max 13 chars)"/>
                       </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel23">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="D-PRS Mode"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="dprsModeComboBox">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="3">
+                            <StringItem index="0" value="Off"/>
+                            <StringItem index="1" value="DV-G"/>
+                            <StringItem index="2" value="DV-A"/>
+                          </StringArray>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="dprsModeComboBoxItemStateChanged"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel24">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="APRS SSID"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel25">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Beacon Interval"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="aprsSSIDComboBox">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="16">
+                            <StringItem index="0" value="-0"/>
+                            <StringItem index="1" value="-1"/>
+                            <StringItem index="2" value="-2"/>
+                            <StringItem index="3" value="-3"/>
+                            <StringItem index="4" value="-4"/>
+                            <StringItem index="5" value="-5"/>
+                            <StringItem index="6" value="-6"/>
+                            <StringItem index="7" value="-7"/>
+                            <StringItem index="8" value="-8"/>
+                            <StringItem index="9" value="-9"/>
+                            <StringItem index="10" value="-10"/>
+                            <StringItem index="11" value="-11"/>
+                            <StringItem index="12" value="-12"/>
+                            <StringItem index="13" value="-13"/>
+                            <StringItem index="14" value="-14"/>
+                            <StringItem index="15" value="-15"/>
+                          </StringArray>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="aprsSSIDComboBoxItemStateChanged"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="beaconComboBox">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="13">
+                            <StringItem index="0" value="Off"/>
+                            <StringItem index="1" value="5 min"/>
+                            <StringItem index="2" value="10 min"/>
+                            <StringItem index="3" value="15 min"/>
+                            <StringItem index="4" value="20 min"/>
+                            <StringItem index="5" value="25 min"/>
+                            <StringItem index="6" value="30 min"/>
+                            <StringItem index="7" value="35 min"/>
+                            <StringItem index="8" value="40 min"/>
+                            <StringItem index="9" value="45 min"/>
+                            <StringItem index="10" value="50 min"/>
+                            <StringItem index="11" value="55 min"/>
+                            <StringItem index="12" value="60 min"/>
+                          </StringArray>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="beaconComboBoxItemStateChanged"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -1212,7 +1299,7 @@
                                   <Component id="contrastSlider" min="-2" max="-2" attributes="0"/>
                                   <Component id="backlightSlider" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="543" max="32767" attributes="0"/>
+                              <EmptySpace pref="533" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1229,7 +1316,7 @@
                                   <Component id="contrastSlider" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="163" max="32767" attributes="0"/>
+                              <EmptySpace pref="157" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1280,7 +1367,7 @@
                                   <Component id="inputVoltage" min="-2" max="-2" attributes="0"/>
                                   <Component id="snmpCmnty" min="-2" pref="381" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="336" max="32767" attributes="0"/>
+                              <EmptySpace pref="315" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1297,7 +1384,7 @@
                                   <Component id="jLabel22" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="snmpCmnty" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="192" max="32767" attributes="0"/>
+                              <EmptySpace pref="184" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1385,7 +1472,7 @@
                       <Component id="loadProgressBar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="loadCancelButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="37" max="32767" attributes="0"/>
+                      <EmptySpace pref="65" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1448,7 +1535,7 @@
                       <Component id="updateProgressBar" min="-2" pref="25" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="updateLabel2" min="-2" pref="93" max="-2" attributes="0"/>
-                      <EmptySpace pref="56" max="32767" attributes="0"/>
+                      <EmptySpace pref="84" max="32767" attributes="0"/>
                       <Component id="updateOKButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>

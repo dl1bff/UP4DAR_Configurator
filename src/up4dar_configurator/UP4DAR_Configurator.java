@@ -190,11 +190,16 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
         jLabel17 = new javax.swing.JLabel();
         standbyBeepVolume = new javax.swing.JTextField();
         dprsPanel = new javax.swing.JPanel();
-        dprsEnableCheckBox = new javax.swing.JCheckBox();
         dprsSymbolComboBox = new javax.swing.JComboBox();
         jLabel13 = new javax.swing.JLabel();
         dprsTextField = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        dprsModeComboBox = new javax.swing.JComboBox();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        aprsSSIDComboBox = new javax.swing.JComboBox();
+        beaconComboBox = new javax.swing.JComboBox();
         displayPanel = new javax.swing.JPanel();
         backlightSlider = new javax.swing.JSlider();
         contrastSlider = new javax.swing.JSlider();
@@ -280,13 +285,13 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
             networkListFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(networkListFrameLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(boardListScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
+                .addComponent(boardListScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(connectButton)
                 .addContainerGap())
         );
 
-        networkListFrame.setBounds(10, 10, 320, 146);
+        networkListFrame.setBounds(10, 10, 318, 185);
         desktopPane.add(networkListFrame, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         configFrame.setNormalBounds(new java.awt.Rectangle(10, 15, 880, 372));
@@ -336,7 +341,7 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                 .addGroup(callsignPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(callSign)
                     .addComponent(callSignExt))
-                .addContainerGap(689, Short.MAX_VALUE))
+                .addContainerGap(683, Short.MAX_VALUE))
         );
         callsignPanelLayout.setVerticalGroup(
             callsignPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -349,7 +354,7 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                 .addGroup(callsignPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(callSignExt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(126, Short.MAX_VALUE))
+                .addContainerGap(122, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Callsign", callsignPanel);
@@ -538,7 +543,7 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                         .addComponent(jLabel18)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txmsgTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(276, Short.MAX_VALUE))
+                .addContainerGap(264, Short.MAX_VALUE))
         );
         dvPanelLayout.setVerticalGroup(
             dvPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -551,7 +556,7 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                 .addGroup(dvPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txmsgTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel18))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("DV", dvPanel);
@@ -657,7 +662,7 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                                     .addComponent(phyTxDelay, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(70, 70, 70)
                                     .addComponent(phySoftwareVersion, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addContainerGap(113, Short.MAX_VALUE))
         );
         phyPanelLayout.setVerticalGroup(
             phyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -685,7 +690,7 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                     .addComponent(jLabel10))
                 .addGap(18, 18, 18)
                 .addComponent(phyRxInv)
-                .addContainerGap(99, Short.MAX_VALUE))
+                .addContainerGap(84, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("PHY", phyPanel);
@@ -855,7 +860,7 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(475, Short.MAX_VALUE))
+                .addContainerGap(445, Short.MAX_VALUE))
         );
         audioPanelLayout.setVerticalGroup(
             audioPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -864,17 +869,10 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                 .addGroup(audioPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(154, Short.MAX_VALUE))
+                .addContainerGap(135, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Audio", audioPanel);
-
-        dprsEnableCheckBox.setText("enable outgoing D-PRS Messages");
-        dprsEnableCheckBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dprsEnableCheckBoxActionPerformed(evt);
-            }
-        });
 
         dprsSymbolComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Jogger", "Car", "House", "Boat", "Bicycle", "Van" }));
         dprsSymbolComboBox.addItemListener(new java.awt.event.ItemListener() {
@@ -883,7 +881,7 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
             }
         });
 
-        jLabel13.setText("D-PRS symbol");
+        jLabel13.setText("D-PRS/APRS symbol");
 
         dprsTextField.setText("jTextField1");
         dprsTextField.addActionListener(new java.awt.event.ActionListener() {
@@ -897,7 +895,34 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
             }
         });
 
-        jLabel14.setText("D-PRS Text (max 13 chars)");
+        jLabel14.setText("D-PRS/APRS Text (max 13 chars)");
+
+        jLabel23.setText("D-PRS Mode");
+
+        dprsModeComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Off", "DV-G", "DV-A" }));
+        dprsModeComboBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                dprsModeComboBoxItemStateChanged(evt);
+            }
+        });
+
+        jLabel24.setText("APRS SSID");
+
+        jLabel25.setText("Beacon Interval");
+
+        aprsSSIDComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "-0", "-1", "-2", "-3", "-4", "-5", "-6", "-7", "-8", "-9", "-10", "-11", "-12", "-13", "-14", "-15" }));
+        aprsSSIDComboBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                aprsSSIDComboBoxItemStateChanged(evt);
+            }
+        });
+
+        beaconComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Off", "5 min", "10 min", "15 min", "20 min", "25 min", "30 min", "35 min", "40 min", "45 min", "50 min", "55 min", "60 min" }));
+        beaconComboBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                beaconComboBoxItemStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout dprsPanelLayout = new javax.swing.GroupLayout(dprsPanel);
         dprsPanel.setLayout(dprsPanelLayout);
@@ -906,31 +931,44 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
             .addGroup(dprsPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(dprsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dprsEnableCheckBox)
-                    .addGroup(dprsPanelLayout.createSequentialGroup()
-                        .addGroup(dprsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel13)
-                            .addComponent(jLabel14))
-                        .addGap(30, 30, 30)
-                        .addGroup(dprsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(dprsSymbolComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(dprsTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(566, Short.MAX_VALUE))
+                    .addComponent(jLabel13)
+                    .addComponent(jLabel14)
+                    .addComponent(jLabel23)
+                    .addComponent(jLabel24)
+                    .addComponent(jLabel25))
+                .addGap(30, 30, 30)
+                .addGroup(dprsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(dprsTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
+                    .addComponent(dprsModeComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(dprsSymbolComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(aprsSSIDComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(beaconComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(508, Short.MAX_VALUE))
         );
         dprsPanelLayout.setVerticalGroup(
             dprsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dprsPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(dprsEnableCheckBox)
-                .addGap(18, 18, 18)
+                .addGroup(dprsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel23)
+                    .addComponent(dprsModeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(dprsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(dprsSymbolComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13))
-                .addGap(33, 33, 33)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(dprsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(dprsTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel14))
-                .addContainerGap(154, Short.MAX_VALUE))
+                    .addComponent(jLabel14)
+                    .addComponent(dprsTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(dprsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel24)
+                    .addComponent(aprsSSIDComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(dprsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel25)
+                    .addComponent(beaconComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(122, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("D-PRS", dprsPanel);
@@ -964,7 +1002,7 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                 .addGroup(displayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(contrastSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(backlightSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(543, Short.MAX_VALUE))
+                .addContainerGap(533, Short.MAX_VALUE))
         );
         displayPanelLayout.setVerticalGroup(
             displayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -977,7 +1015,7 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                 .addGroup(displayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(contrastSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel20))
-                .addContainerGap(163, Short.MAX_VALUE))
+                .addContainerGap(157, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Display", displayPanel);
@@ -1004,7 +1042,7 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                 .addGroup(debugPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(inputVoltage)
                     .addComponent(snmpCmnty, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(336, Short.MAX_VALUE))
+                .addContainerGap(315, Short.MAX_VALUE))
         );
         debugPanelLayout.setVerticalGroup(
             debugPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1017,7 +1055,7 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                 .addGroup(debugPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel22)
                     .addComponent(snmpCmnty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(192, Short.MAX_VALUE))
+                .addContainerGap(184, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Debug", debugPanel);
@@ -1093,10 +1131,10 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                 .addComponent(loadProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(loadCancelButton)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
-        loadingFrame.setBounds(200, 200, 340, 144);
+        loadingFrame.setBounds(200, 200, 338, 189);
         desktopPane.add(loadingFrame, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         updateFrame.setTitle("Firmware Update");
@@ -1138,12 +1176,12 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                 .addComponent(updateProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(updateLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
                 .addComponent(updateOKButton)
                 .addContainerGap())
         );
 
-        updateFrame.setBounds(90, 300, 339, 298);
+        updateFrame.setBounds(90, 300, 337, 337);
         desktopPane.add(updateFrame, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         fileMenu.setMnemonic('f');
@@ -1777,37 +1815,6 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
         }
     }//GEN-LAST:event_contrastSliderStateChanged
 
-    private void dprsEnableCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dprsEnableCheckBoxActionPerformed
-        try
-        {
-            int value;
-            
-            if (dprsEnableCheckBox.isSelected())
-            {
-                value = 1;
-            }
-            else
-            {
-                value = 0;
-            }
-            
-            snmp.snmpSetInteger("810", value);
-     
-        } catch (Exception ex)
-        {
-            // perhaps format was wrong
-        }
-        
-        try
-        {
-            dprsEnableCheckBox.setSelected(snmp.snmpGetInteger("810") == 1);
-                    
-        } catch (Exception ex)
-        {
-            Logger.getLogger(UP4DAR_Configurator.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_dprsEnableCheckBoxActionPerformed
-
     private void dprsSymbolComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_dprsSymbolComboBoxItemStateChanged
        
         try
@@ -2036,6 +2043,36 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
         updateFrame.setVisible(false);
     }//GEN-LAST:event_updateOKButtonActionPerformed
 
+    private void dprsModeComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_dprsModeComboBoxItemStateChanged
+      try
+      {          
+        snmp.snmpSetInteger("810", dprsModeComboBox.getSelectedIndex());
+      } catch (Exception ex)
+      {
+
+      }
+    }//GEN-LAST:event_dprsModeComboBoxItemStateChanged
+
+    private void aprsSSIDComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_aprsSSIDComboBoxItemStateChanged
+      try
+      {          
+        snmp.snmpSetInteger("840", aprsSSIDComboBox.getSelectedIndex());
+      } catch (Exception ex)
+      {
+
+      }
+    }//GEN-LAST:event_aprsSSIDComboBoxItemStateChanged
+
+    private void beaconComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_beaconComboBoxItemStateChanged
+      try
+      {          
+        snmp.snmpSetInteger("850", 5 * beaconComboBox.getSelectedIndex());
+      } catch (Exception ex)
+      {
+
+      }
+    }//GEN-LAST:event_beaconComboBoxItemStateChanged
+
     
     
     void initTableListener()
@@ -2154,12 +2191,18 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                 txmsgTextField.setText(snmp.snmpGetString("770"));
                 progIncr();
                 
-                dprsEnableCheckBox.setSelected(snmp.snmpGetInteger("810") == 1);
+                dprsModeComboBox.setSelectedIndex(snmp.snmpGetInteger("810"));
                 progIncr();
                 
                 dprsSymbolComboBox.setSelectedIndex(snmp.snmpGetInteger("820"));
                 progIncr();
                 
+                aprsSSIDComboBox.setSelectedIndex(snmp.snmpGetInteger("840"));
+                progIncr();
+
+                beaconComboBox.setSelectedIndex(snmp.snmpGetInteger("850") / 5);
+                progIncr();
+
                 dprsTextField.setText(snmp.snmpGetString("830"));
                 progIncr();
                 
@@ -2409,8 +2452,10 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JButton ExitButton;
     javax.swing.JMenuItem aboutMenuItem;
+    javax.swing.JComboBox aprsSSIDComboBox;
     javax.swing.JPanel audioPanel;
     javax.swing.JSlider backlightSlider;
+    javax.swing.JComboBox beaconComboBox;
     javax.swing.JList boardList;
     javax.swing.JScrollPane boardListScrollPane;
     javax.swing.JTextField callSign;
@@ -2426,7 +2471,7 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
     javax.swing.JMenuItem deleteMenuItem;
     javax.swing.JDesktopPane desktopPane;
     javax.swing.JPanel displayPanel;
-    javax.swing.JCheckBox dprsEnableCheckBox;
+    javax.swing.JComboBox dprsModeComboBox;
     javax.swing.JPanel dprsPanel;
     javax.swing.JComboBox dprsSymbolComboBox;
     javax.swing.JTextField dprsTextField;
@@ -2451,6 +2496,9 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
     javax.swing.JLabel jLabel20;
     javax.swing.JLabel jLabel21;
     javax.swing.JLabel jLabel22;
+    javax.swing.JLabel jLabel23;
+    javax.swing.JLabel jLabel24;
+    javax.swing.JLabel jLabel25;
     javax.swing.JLabel jLabel3;
     javax.swing.JLabel jLabel4;
     javax.swing.JLabel jLabel5;
