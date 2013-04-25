@@ -32,6 +32,9 @@ import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
 /**
  *
  * @author Michael Dirska <dl1bff@mdx.de>
@@ -76,6 +79,8 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
     UP4DAR_RemoteDisplay remoteDisplay;
     
     int firmwareVersion = 0;
+    
+    javax.swing.Timer  remoteDisplayRefreshTimer; 
    
     /**
      * Creates new form UP4DAR_Configurator
@@ -130,6 +135,32 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
        
         remoteDisplayLabel.setIcon(new javax.swing.ImageIcon(
                        this.createImage(remoteDisplay.getImageSource()) ));
+        
+        remoteDisplayRefreshTimer = new javax.swing.Timer(5000,
+                new ActionListener()
+                {
+                    @Override
+                    public void actionPerformed(ActionEvent evt)
+                    {
+                        
+                        if (remoteDisplayLabel.isShowing() && (firmwareVersion == 10127))
+                        {
+                            
+                            try
+                            {
+                                remoteDisplay.updatePixel(snmp.snmpGetBinaryString(
+                                        remoteDisplayScreens[remoteScreenComboBox.getSelectedIndex()]));
+                            }
+                            catch (Exception e)
+                            {
+                            }
+                        }                       
+                    }
+                }
+        );
+        
+        remoteDisplayRefreshTimer.setInitialDelay(100);
+        remoteDisplayRefreshTimer.start();
         
     }
 
@@ -215,7 +246,7 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
-        jSlider1 = new javax.swing.JSlider();
+        remoteScreenRefreshRateSlider = new javax.swing.JSlider();
         remoteScreenComboBox = new javax.swing.JComboBox();
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
@@ -299,13 +330,13 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
             networkListFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(networkListFrameLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(boardListScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
+                .addComponent(boardListScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(connectButton)
                 .addContainerGap())
         );
 
-        networkListFrame.setBounds(10, 10, 320, 158);
+        networkListFrame.setBounds(10, 10, 320, 166);
         desktopPane.add(networkListFrame, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         configFrame.setNormalBounds(new java.awt.Rectangle(10, 15, 880, 372));
@@ -984,6 +1015,13 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
 
         jButton6.setText("key6");
 
+        remoteScreenRefreshRateSlider.setMinimum(1);
+        remoteScreenRefreshRateSlider.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                remoteScreenRefreshRateSliderStateChanged(evt);
+            }
+        });
+
         remoteScreenComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Main", "GPS", "Reflector", "Debug", "Audio" }));
         remoteScreenComboBox.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -1010,7 +1048,7 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                 .addGroup(displayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(contrastSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(backlightSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(remoteScreenRefreshRateSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(remoteScreenComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
                 .addGroup(displayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -1071,7 +1109,7 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                         .addGap(2, 2, 2)
                         .addGroup(displayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel23)
-                            .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(remoteScreenRefreshRateSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
@@ -1188,10 +1226,10 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                 .addComponent(loadProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(loadCancelButton)
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
-        loadingFrame.setBounds(200, 200, 340, 156);
+        loadingFrame.setBounds(200, 200, 340, 164);
         desktopPane.add(loadingFrame, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         updateFrame.setTitle("Firmware Update");
@@ -1233,12 +1271,12 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                 .addComponent(updateProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(updateLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
                 .addComponent(updateOKButton)
                 .addContainerGap())
         );
 
-        updateFrame.setBounds(90, 300, 339, 310);
+        updateFrame.setBounds(90, 300, 339, 318);
         desktopPane.add(updateFrame, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         fileMenu.setMnemonic('f');
@@ -2156,6 +2194,14 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
         }
     }//GEN-LAST:event_remoteScreenComboBoxItemStateChanged
 
+    private void remoteScreenRefreshRateSliderStateChanged(javax.swing.event.ChangeEvent evt)//GEN-FIRST:event_remoteScreenRefreshRateSliderStateChanged
+    {//GEN-HEADEREND:event_remoteScreenRefreshRateSliderStateChanged
+        
+        remoteDisplayRefreshTimer.setDelay(100 * remoteScreenRefreshRateSlider.getValue());
+        remoteDisplayRefreshTimer.restart();
+        
+    }//GEN-LAST:event_remoteScreenRefreshRateSliderStateChanged
+
     
     
     void initTableListener()
@@ -2620,7 +2666,6 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
     javax.swing.JPanel jPanel5;
     javax.swing.JScrollPane jScrollPane1;
     javax.swing.JScrollPane jScrollPane2;
-    javax.swing.JSlider jSlider1;
     javax.swing.JTabbedPane jTabbedPane1;
     javax.swing.JButton loadCancelButton;
     javax.swing.JProgressBar loadProgressBar;
@@ -2643,6 +2688,7 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
     javax.swing.JTextField pttBeepVolume;
     javax.swing.JLabel remoteDisplayLabel;
     javax.swing.JComboBox remoteScreenComboBox;
+    javax.swing.JSlider remoteScreenRefreshRateSlider;
     javax.swing.JCheckBox rptDirectCheckbox;
     javax.swing.JPanel rptSettingsPanel;
     javax.swing.JSpinner rptSpinner;
