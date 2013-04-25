@@ -343,13 +343,13 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
             networkListFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(networkListFrameLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(boardListScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
+                .addComponent(boardListScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(connectButton)
                 .addContainerGap())
         );
 
-        networkListFrame.setBounds(10, 10, 320, 190);
+        networkListFrame.setBounds(10, 10, 320, 194);
         desktopPane.add(networkListFrame, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         configFrame.setNormalBounds(new java.awt.Rectangle(10, 15, 880, 372));
@@ -1198,6 +1198,72 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
 
         jTabbedPane1.addTab("Debug", debugPanel);
 
+        myIP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                myIPActionPerformed(evt);
+            }
+        });
+        myIP.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                myIPFocusLost(evt);
+            }
+        });
+
+        netmaskIP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                netmaskIPActionPerformed(evt);
+            }
+        });
+        netmaskIP.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                netmaskIPFocusLost(evt);
+            }
+        });
+
+        gwIP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gwIPActionPerformed(evt);
+            }
+        });
+        gwIP.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                gwIPFocusLost(evt);
+            }
+        });
+
+        DNS_IP1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DNS_IP1ActionPerformed(evt);
+            }
+        });
+        DNS_IP1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                DNS_IP1FocusLost(evt);
+            }
+        });
+
+        DNS_IP2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DNS_IP2ActionPerformed(evt);
+            }
+        });
+        DNS_IP2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                DNS_IP2FocusLost(evt);
+            }
+        });
+
+        NTP_IP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NTP_IPActionPerformed(evt);
+            }
+        });
+        NTP_IP.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                NTP_IPFocusLost(evt);
+            }
+        });
+
         jLabel25.setText("IP address");
 
         jLabel26.setText("netmask");
@@ -1336,10 +1402,10 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                 .addComponent(loadProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(loadCancelButton)
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addContainerGap(85, Short.MAX_VALUE))
         );
 
-        loadingFrame.setBounds(200, 200, 340, 188);
+        loadingFrame.setBounds(200, 200, 340, 192);
         desktopPane.add(loadingFrame, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         updateFrame.setTitle("Firmware Update");
@@ -1381,12 +1447,12 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                 .addComponent(updateProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(updateLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
                 .addComponent(updateOKButton)
                 .addContainerGap())
         );
 
-        updateFrame.setBounds(90, 300, 339, 342);
+        updateFrame.setBounds(90, 300, 339, 346);
         desktopPane.add(updateFrame, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         fileMenu.setMnemonic('f');
@@ -2187,7 +2253,7 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                 {
                     int imageType = result[0] & 0x03;
                     
-                    if ((imageType < 1) || (imageType > 4))
+                    if (imageType < 1)
                     {
                         errorOccured = true;
                     }
@@ -2299,16 +2365,14 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
     
     private void remoteScreenComboBoxItemStateChanged(java.awt.event.ItemEvent evt)//GEN-FIRST:event_remoteScreenComboBoxItemStateChanged
     {//GEN-HEADEREND:event_remoteScreenComboBoxItemStateChanged
-        if (firmwareVersion == 10127)
+       
+        try
         {
-            try
-            {
-                remoteDisplay.updatePixel(snmp.snmpGetBinaryString(
-                        remoteDisplayScreens[remoteScreenComboBox.getSelectedIndex()]));
-            }
-            catch (Exception e)
-            {
-            }
+            remoteDisplay.updatePixel(snmp.snmpGetBinaryString(
+                    remoteDisplayScreens[remoteScreenComboBox.getSelectedIndex()]));
+        }
+        catch (Exception e)
+        {
         }
     }//GEN-LAST:event_remoteScreenComboBoxItemStateChanged
 
@@ -2364,6 +2428,81 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
     }//GEN-LAST:event_jButton6ActionPerformed
 
     
+    private void setIpAddr (JIpTextField tf, String snmpVar)
+    {
+ 
+        try
+        {
+            byte[] dataBytes = tf.getIpAddress().getAddress();
+            
+            snmp.snmpSetBinaryString(snmpVar, dataBytes);
+        }
+        catch (Exception e)
+        {
+        }
+    }
+    
+    private void myIPActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_myIPActionPerformed
+    {//GEN-HEADEREND:event_myIPActionPerformed
+        setIpAddr(myIP, "1710");
+    }//GEN-LAST:event_myIPActionPerformed
+
+    private void myIPFocusLost(java.awt.event.FocusEvent evt)//GEN-FIRST:event_myIPFocusLost
+    {//GEN-HEADEREND:event_myIPFocusLost
+        myIPActionPerformed(null);
+    }//GEN-LAST:event_myIPFocusLost
+
+    private void netmaskIPActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_netmaskIPActionPerformed
+    {//GEN-HEADEREND:event_netmaskIPActionPerformed
+        setIpAddr(netmaskIP, "1720");
+    }//GEN-LAST:event_netmaskIPActionPerformed
+
+    private void netmaskIPFocusLost(java.awt.event.FocusEvent evt)//GEN-FIRST:event_netmaskIPFocusLost
+    {//GEN-HEADEREND:event_netmaskIPFocusLost
+        netmaskIPActionPerformed(null);
+    }//GEN-LAST:event_netmaskIPFocusLost
+
+    private void gwIPActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_gwIPActionPerformed
+    {//GEN-HEADEREND:event_gwIPActionPerformed
+        setIpAddr(gwIP, "1730");
+    }//GEN-LAST:event_gwIPActionPerformed
+
+    private void gwIPFocusLost(java.awt.event.FocusEvent evt)//GEN-FIRST:event_gwIPFocusLost
+    {//GEN-HEADEREND:event_gwIPFocusLost
+        gwIPActionPerformed(null);
+    }//GEN-LAST:event_gwIPFocusLost
+
+    private void DNS_IP1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_DNS_IP1ActionPerformed
+    {//GEN-HEADEREND:event_DNS_IP1ActionPerformed
+        setIpAddr(DNS_IP1, "1740");
+    }//GEN-LAST:event_DNS_IP1ActionPerformed
+
+    private void DNS_IP1FocusLost(java.awt.event.FocusEvent evt)//GEN-FIRST:event_DNS_IP1FocusLost
+    {//GEN-HEADEREND:event_DNS_IP1FocusLost
+        DNS_IP1ActionPerformed(null);
+    }//GEN-LAST:event_DNS_IP1FocusLost
+
+    private void DNS_IP2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_DNS_IP2ActionPerformed
+    {//GEN-HEADEREND:event_DNS_IP2ActionPerformed
+        setIpAddr(DNS_IP2, "1750");
+    }//GEN-LAST:event_DNS_IP2ActionPerformed
+
+    private void DNS_IP2FocusLost(java.awt.event.FocusEvent evt)//GEN-FIRST:event_DNS_IP2FocusLost
+    {//GEN-HEADEREND:event_DNS_IP2FocusLost
+        DNS_IP2ActionPerformed(null);
+    }//GEN-LAST:event_DNS_IP2FocusLost
+
+    private void NTP_IPActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_NTP_IPActionPerformed
+    {//GEN-HEADEREND:event_NTP_IPActionPerformed
+        setIpAddr(NTP_IP, "1760");
+    }//GEN-LAST:event_NTP_IPActionPerformed
+
+    private void NTP_IPFocusLost(java.awt.event.FocusEvent evt)//GEN-FIRST:event_NTP_IPFocusLost
+    {//GEN-HEADEREND:event_NTP_IPFocusLost
+        NTP_IPActionPerformed(null);
+    }//GEN-LAST:event_NTP_IPFocusLost
+
+    
     
     void initTableListener()
     {
@@ -2403,15 +2542,48 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                 System.out.println("could not read firmware version");
             }
             
+            
+            try
+            {
+                remoteDisplay.updatePixel(snmp.snmpGetBinaryString(
+                    remoteDisplayScreens[0]));
+                progIncr();                   
+
+                myIP.setIpAddress(InetAddress.getByAddress(
+                        snmp.snmpGetBinaryString("1710")));
+                progIncr(); 
+
+                netmaskIP.setIpAddress(InetAddress.getByAddress(
+                        snmp.snmpGetBinaryString("1720")));
+                progIncr(); 
+
+                gwIP.setIpAddress(InetAddress.getByAddress(
+                        snmp.snmpGetBinaryString("1730")));
+                progIncr(); 
+
+                DNS_IP1.setIpAddress(InetAddress.getByAddress(
+                        snmp.snmpGetBinaryString("1740")));
+                progIncr(); 
+
+                DNS_IP2.setIpAddress(InetAddress.getByAddress(
+                        snmp.snmpGetBinaryString("1750")));
+                progIncr(); 
+
+                NTP_IP.setIpAddress(InetAddress.getByAddress(
+                        snmp.snmpGetBinaryString("1760")));
+                progIncr(); 
+            }
+            catch (Exception e)
+            {
+                System.out.println("could not read special variables");
+            }
+            
+               
+            
             progIncr();
             try
             {
-                if (firmwareVersion == 10127)
-                {
-                    remoteDisplay.updatePixel(snmp.snmpGetBinaryString(
-                            remoteDisplayScreens[0]));
-                }
-               
+                
                 callSign.setText( snmp.snmpGetString("30"));
                 progIncr();
                 

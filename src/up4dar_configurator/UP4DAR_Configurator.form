@@ -198,7 +198,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="boardListScrollPane" pref="106" max="32767" attributes="0"/>
+                      <Component id="boardListScrollPane" pref="110" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="connectButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -1556,16 +1556,40 @@
                   </Layout>
                   <SubComponents>
                     <Component class="up4dar_configurator.JIpTextField" name="myIP">
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myIPActionPerformed"/>
+                        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="myIPFocusLost"/>
+                      </Events>
                     </Component>
                     <Component class="up4dar_configurator.JIpTextField" name="netmaskIP">
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="netmaskIPActionPerformed"/>
+                        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="netmaskIPFocusLost"/>
+                      </Events>
                     </Component>
                     <Component class="up4dar_configurator.JIpTextField" name="gwIP">
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="gwIPActionPerformed"/>
+                        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="gwIPFocusLost"/>
+                      </Events>
                     </Component>
                     <Component class="up4dar_configurator.JIpTextField" name="DNS_IP1">
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DNS_IP1ActionPerformed"/>
+                        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="DNS_IP1FocusLost"/>
+                      </Events>
                     </Component>
                     <Component class="up4dar_configurator.JIpTextField" name="DNS_IP2">
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DNS_IP2ActionPerformed"/>
+                        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="DNS_IP2FocusLost"/>
+                      </Events>
                     </Component>
                     <Component class="up4dar_configurator.JIpTextField" name="NTP_IP">
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NTP_IPActionPerformed"/>
+                        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="NTP_IPFocusLost"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel25">
                       <Properties>
@@ -1658,7 +1682,7 @@
                       <Component id="loadProgressBar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="loadCancelButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="81" max="32767" attributes="0"/>
+                      <EmptySpace pref="85" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1721,7 +1745,7 @@
                       <Component id="updateProgressBar" min="-2" pref="25" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="updateLabel2" min="-2" pref="93" max="-2" attributes="0"/>
-                      <EmptySpace pref="100" max="32767" attributes="0"/>
+                      <EmptySpace pref="104" max="32767" attributes="0"/>
                       <Component id="updateOKButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>

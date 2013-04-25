@@ -382,17 +382,20 @@ public class JIpTextField extends JTextField implements Serializable {
 
         public void actionPerformed(ActionEvent e) {
             transferFocus();
+            ref.fireActionPerformed();
         }
 
         public void focusGained(FocusEvent e) {
             selectText(((JTextField) e.getComponent()));
             focus = true;
-            ref.repaint();
+            ref.repaint();    
+            ref.processFocusEvent(e);
         }
 
         public void focusLost(FocusEvent e) {
             focus = false;
-            ref.repaint();
+            ref.repaint();     
+            ref.processFocusEvent(e);
         }
 
         public void keyTyped(KeyEvent e) {
