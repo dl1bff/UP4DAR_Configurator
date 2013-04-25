@@ -2349,7 +2349,7 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
     public static InetAddress cmdlineIP = null;
     public static String cmdlineCmnty = null;
     
-    
+    public static int snmpPortNumber = 161;
     
     /**
      * @param args the command line arguments
@@ -2382,7 +2382,7 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
         }
         //</editor-fold>
 
-        if (args.length == 2) // exactly two arguments
+        if (args.length >= 2) // minimum two arguments
         {
             try
             {
@@ -2392,6 +2392,17 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
             catch (java.net.UnknownHostException e)
             {
                 cmdlineIP = null;
+            }
+        }
+        
+        if (args.length >= 3) // minimum three arguments
+        {
+            try
+            {
+                snmpPortNumber = Integer.parseInt(args[2]) & 0xFFFF;
+            }
+            catch (NumberFormatException e)
+            {                
             }
         }
         

@@ -655,7 +655,8 @@ public class UP4DAR_SNMP
     
     SNMP_Response sendAndRecv(SNMP_Request req)
     {
-        DatagramPacket dp = new DatagramPacket(req.binData, req.udpPacketLen, addr, 161);        
+        DatagramPacket dp = new DatagramPacket(req.binData, req.udpPacketLen,
+                addr, UP4DAR_Configurator.snmpPortNumber);        
         byte[] recvBuf = new byte[200];
         DatagramPacket drx = new DatagramPacket(recvBuf, recvBuf.length);
         
