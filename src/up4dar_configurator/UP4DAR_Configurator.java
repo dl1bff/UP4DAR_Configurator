@@ -72,6 +72,10 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
 
     
     UP4DAR_SNMP snmp;
+    
+    UP4DAR_RemoteDisplay remoteDisplay;
+    
+    int firmwareVersion = 0;
    
     /**
      * Creates new form UP4DAR_Configurator
@@ -120,9 +124,13 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
             bcRX.addClient(cmdlineIP, cmdlineCmnty);
         }
         
+        remoteDisplay = new UP4DAR_RemoteDisplay(3);
+        
         initComponents();
        
-    
+        remoteDisplayLabel.setIcon(new javax.swing.ImageIcon(
+                       this.createImage(remoteDisplay.getImageSource()) ));
+        
     }
 
     /**
@@ -200,6 +208,17 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
         contrastSlider = new javax.swing.JSlider();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
+        remoteDisplayLabel = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jSlider1 = new javax.swing.JSlider();
+        remoteScreenComboBox = new javax.swing.JComboBox();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
         debugPanel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         inputVoltage = new javax.swing.JLabel();
@@ -280,13 +299,13 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
             networkListFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(networkListFrameLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(boardListScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
+                .addComponent(boardListScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(connectButton)
                 .addContainerGap())
         );
 
-        networkListFrame.setBounds(10, 10, 320, 146);
+        networkListFrame.setBounds(10, 10, 320, 158);
         desktopPane.add(networkListFrame, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         configFrame.setNormalBounds(new java.awt.Rectangle(10, 15, 880, 372));
@@ -551,7 +570,7 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                 .addGroup(dvPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txmsgTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel18))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("DV", dvPanel);
@@ -864,7 +883,7 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                 .addGroup(audioPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(154, Short.MAX_VALUE))
+                .addContainerGap(158, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Audio", audioPanel);
@@ -951,6 +970,31 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
 
         jLabel20.setText("Contrast");
 
+        remoteDisplayLabel.setToolTipText("");
+
+        jButton1.setText("key1");
+
+        jButton2.setText("key2");
+
+        jButton3.setText("key3");
+
+        jButton4.setText("key4");
+
+        jButton5.setText("key5");
+
+        jButton6.setText("key6");
+
+        remoteScreenComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Main", "GPS", "Reflector", "Debug", "Audio" }));
+        remoteScreenComboBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                remoteScreenComboBoxItemStateChanged(evt);
+            }
+        });
+
+        jLabel23.setText("Refresh Rate");
+
+        jLabel24.setText("Screen");
+
         javax.swing.GroupLayout displayPanelLayout = new javax.swing.GroupLayout(displayPanel);
         displayPanel.setLayout(displayPanelLayout);
         displayPanelLayout.setHorizontalGroup(
@@ -959,25 +1003,76 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                 .addContainerGap()
                 .addGroup(displayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel19)
-                    .addComponent(jLabel20))
+                    .addComponent(jLabel20)
+                    .addComponent(jLabel23)
+                    .addComponent(jLabel24))
                 .addGap(18, 18, 18)
                 .addGroup(displayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(contrastSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(backlightSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(543, Short.MAX_VALUE))
+                    .addComponent(backlightSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(remoteScreenComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addGroup(displayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(displayPanelLayout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addGap(57, 57, 57)
+                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton3)
+                        .addGap(57, 57, 57)
+                        .addComponent(jButton4))
+                    .addComponent(remoteDisplayLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(displayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton5)
+                    .addComponent(jButton6))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
         displayPanelLayout.setVerticalGroup(
             displayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(displayPanelLayout.createSequentialGroup()
-                .addGap(48, 48, 48)
                 .addGroup(displayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(backlightSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel19))
-                .addGap(18, 18, 18)
+                    .addGroup(displayPanelLayout.createSequentialGroup()
+                        .addGroup(displayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(displayPanelLayout.createSequentialGroup()
+                                .addGap(48, 48, 48)
+                                .addGroup(displayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(backlightSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel19))
+                                .addGap(18, 18, 18)
+                                .addGroup(displayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(contrastSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel20))
+                                .addGap(31, 31, 31))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, displayPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jButton6)
+                                .addGap(57, 57, 57)))
+                        .addGroup(displayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton5)
+                            .addGroup(displayPanelLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(displayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(remoteScreenComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel24)))))
+                    .addGroup(displayPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(remoteDisplayLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(displayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(contrastSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel20))
-                .addContainerGap(163, Short.MAX_VALUE))
+                    .addGroup(displayPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(displayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton1)
+                            .addComponent(jButton3)
+                            .addComponent(jButton2)
+                            .addComponent(jButton4)))
+                    .addGroup(displayPanelLayout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addGroup(displayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel23)
+                            .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Display", displayPanel);
@@ -1093,10 +1188,10 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                 .addComponent(loadProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(loadCancelButton)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
-        loadingFrame.setBounds(200, 200, 340, 144);
+        loadingFrame.setBounds(200, 200, 340, 156);
         desktopPane.add(loadingFrame, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         updateFrame.setTitle("Firmware Update");
@@ -1138,12 +1233,12 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                 .addComponent(updateProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(updateLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
                 .addComponent(updateOKButton)
                 .addContainerGap())
         );
 
-        updateFrame.setBounds(90, 300, 339, 298);
+        updateFrame.setBounds(90, 300, 339, 310);
         desktopPane.add(updateFrame, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         fileMenu.setMnemonic('f');
@@ -1942,7 +2037,7 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                 }
                 else
                 {
-                    int imageType = result[0] & 0x3F;
+                    int imageType = result[0] & 0x03;
                     
                     if ((imageType < 1) || (imageType > 4))
                     {
@@ -2037,6 +2132,31 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
     }//GEN-LAST:event_updateOKButtonActionPerformed
 
     
+    static final String remoteDisplayScreens[] = {
+    
+      "18110",  // Main
+      "18120",  // GPS
+      "18130",  // Reflector
+      "18140",  // Debug
+      "18160"   // Audio
+   };
+    
+    private void remoteScreenComboBoxItemStateChanged(java.awt.event.ItemEvent evt)//GEN-FIRST:event_remoteScreenComboBoxItemStateChanged
+    {//GEN-HEADEREND:event_remoteScreenComboBoxItemStateChanged
+        if (firmwareVersion == 10127)
+        {
+            try
+            {
+                remoteDisplay.updatePixel(snmp.snmpGetBinaryString(
+                        remoteDisplayScreens[remoteScreenComboBox.getSelectedIndex()]));
+            }
+            catch (Exception e)
+            {
+            }
+        }
+    }//GEN-LAST:event_remoteScreenComboBoxItemStateChanged
+
+    
     
     void initTableListener()
     {
@@ -2063,9 +2183,28 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
         @Override
         public Void doInBackground()
         {
+            
+            
+            progIncr();
+            
+            try
+            {
+                firmwareVersion = snmp.snmpGetInteger("160");
+            }
+            catch (Exception e)
+            {
+                System.out.println("could not read firmware version");
+            }
+            
             progIncr();
             try
             {
+                if (firmwareVersion == 10127)
+                {
+                    remoteDisplay.updatePixel(snmp.snmpGetBinaryString(
+                            remoteDisplayScreens[0]));
+                }
+               
                 callSign.setText( snmp.snmpGetString("30"));
                 progIncr();
                 
@@ -2447,6 +2586,12 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
     javax.swing.JMenu fileMenu;
     javax.swing.JMenu helpMenu;
     javax.swing.JLabel inputVoltage;
+    javax.swing.JButton jButton1;
+    javax.swing.JButton jButton2;
+    javax.swing.JButton jButton3;
+    javax.swing.JButton jButton4;
+    javax.swing.JButton jButton5;
+    javax.swing.JButton jButton6;
     javax.swing.JLabel jLabel1;
     javax.swing.JLabel jLabel10;
     javax.swing.JLabel jLabel11;
@@ -2462,6 +2607,8 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
     javax.swing.JLabel jLabel20;
     javax.swing.JLabel jLabel21;
     javax.swing.JLabel jLabel22;
+    javax.swing.JLabel jLabel23;
+    javax.swing.JLabel jLabel24;
     javax.swing.JLabel jLabel3;
     javax.swing.JLabel jLabel4;
     javax.swing.JLabel jLabel5;
@@ -2473,6 +2620,7 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
     javax.swing.JPanel jPanel5;
     javax.swing.JScrollPane jScrollPane1;
     javax.swing.JScrollPane jScrollPane2;
+    javax.swing.JSlider jSlider1;
     javax.swing.JTabbedPane jTabbedPane1;
     javax.swing.JButton loadCancelButton;
     javax.swing.JProgressBar loadProgressBar;
@@ -2493,6 +2641,8 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
     javax.swing.JTextField pttBeepDuration;
     javax.swing.JTextField pttBeepFrequency;
     javax.swing.JTextField pttBeepVolume;
+    javax.swing.JLabel remoteDisplayLabel;
+    javax.swing.JComboBox remoteScreenComboBox;
     javax.swing.JCheckBox rptDirectCheckbox;
     javax.swing.JPanel rptSettingsPanel;
     javax.swing.JSpinner rptSpinner;
