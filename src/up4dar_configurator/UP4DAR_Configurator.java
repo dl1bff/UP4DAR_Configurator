@@ -1004,16 +1004,46 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
         remoteDisplayLabel.setToolTipText("");
 
         jButton1.setText("key1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("key2");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("key3");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("key4");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("key5");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setText("key6");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         remoteScreenRefreshRateSlider.setMinimum(1);
         remoteScreenRefreshRateSlider.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -2169,6 +2199,14 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
         updateFrame.setVisible(false);
     }//GEN-LAST:event_updateOKButtonActionPerformed
 
+    static final String remoteDisplayButtons[] = {
+    
+      "18210",  // Main
+      "18220",  // GPS
+      "18230",  // Reflector
+      "18240",  // Debug
+      "18260"   // Audio
+   };
     
     static final String remoteDisplayScreens[] = {
     
@@ -2201,6 +2239,49 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
         remoteDisplayRefreshTimer.restart();
         
     }//GEN-LAST:event_remoteScreenRefreshRateSliderStateChanged
+
+    private void remote_control_button_pressed(int num)
+    {
+        try
+        {
+            snmp.snmpSetInteger(
+               remoteDisplayButtons[remoteScreenComboBox.getSelectedIndex()],
+               num );
+        }
+        catch (Exception e)
+        {
+        }
+    }
+    
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
+    {//GEN-HEADEREND:event_jButton1ActionPerformed
+        remote_control_button_pressed(1);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton2ActionPerformed
+    {//GEN-HEADEREND:event_jButton2ActionPerformed
+        remote_control_button_pressed(2);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton3ActionPerformed
+    {//GEN-HEADEREND:event_jButton3ActionPerformed
+        remote_control_button_pressed(3);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton4ActionPerformed
+    {//GEN-HEADEREND:event_jButton4ActionPerformed
+        remote_control_button_pressed(0);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton5ActionPerformed
+    {//GEN-HEADEREND:event_jButton5ActionPerformed
+        remote_control_button_pressed(5);
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton6ActionPerformed
+    {//GEN-HEADEREND:event_jButton6ActionPerformed
+        remote_control_button_pressed(4);
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     
     
