@@ -255,6 +255,19 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
         inputVoltage = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         snmpCmnty = new javax.swing.JTextField();
+        networkPanel = new javax.swing.JPanel();
+        myIP = new up4dar_configurator.JIpTextField();
+        netmaskIP = new up4dar_configurator.JIpTextField();
+        gwIP = new up4dar_configurator.JIpTextField();
+        DNS_IP1 = new up4dar_configurator.JIpTextField();
+        DNS_IP2 = new up4dar_configurator.JIpTextField();
+        NTP_IP = new up4dar_configurator.JIpTextField();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
         ExitButton = new javax.swing.JButton();
         saveToFlash = new javax.swing.JButton();
         loadingFrame = new javax.swing.JInternalFrame();
@@ -330,13 +343,13 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
             networkListFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(networkListFrameLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(boardListScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
+                .addComponent(boardListScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(connectButton)
                 .addContainerGap())
         );
 
-        networkListFrame.setBounds(10, 10, 320, 166);
+        networkListFrame.setBounds(10, 10, 320, 190);
         desktopPane.add(networkListFrame, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         configFrame.setNormalBounds(new java.awt.Rectangle(10, 15, 880, 372));
@@ -1185,6 +1198,73 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
 
         jTabbedPane1.addTab("Debug", debugPanel);
 
+        jLabel25.setText("IP address");
+
+        jLabel26.setText("netmask");
+
+        jLabel27.setText("gateway");
+
+        jLabel28.setText("DNS server 1");
+
+        jLabel29.setText("DNS server 2");
+
+        jLabel30.setText("NTP server");
+
+        javax.swing.GroupLayout networkPanelLayout = new javax.swing.GroupLayout(networkPanel);
+        networkPanel.setLayout(networkPanelLayout);
+        networkPanelLayout.setHorizontalGroup(
+            networkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(networkPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(networkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel25)
+                    .addComponent(jLabel26)
+                    .addComponent(jLabel27)
+                    .addComponent(jLabel28)
+                    .addComponent(jLabel29)
+                    .addComponent(jLabel30))
+                .addGap(18, 18, 18)
+                .addGroup(networkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(netmaskIP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(myIP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(gwIP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DNS_IP1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DNS_IP2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NTP_IP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(618, Short.MAX_VALUE))
+        );
+        networkPanelLayout.setVerticalGroup(
+            networkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(networkPanelLayout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addGroup(networkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel25)
+                    .addComponent(myIP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(networkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(netmaskIP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel26))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(networkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(gwIP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel27))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(networkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DNS_IP1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel28))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(networkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DNS_IP2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel29))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(networkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel30)
+                    .addComponent(NTP_IP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(88, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Network", networkPanel);
+
         ExitButton.setText("Exit");
         ExitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1256,10 +1336,10 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                 .addComponent(loadProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(loadCancelButton)
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
 
-        loadingFrame.setBounds(200, 200, 340, 164);
+        loadingFrame.setBounds(200, 200, 340, 188);
         desktopPane.add(loadingFrame, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         updateFrame.setTitle("Firmware Update");
@@ -1301,12 +1381,12 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                 .addComponent(updateProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(updateLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
                 .addComponent(updateOKButton)
                 .addContainerGap())
         );
 
-        updateFrame.setBounds(90, 300, 339, 318);
+        updateFrame.setBounds(90, 300, 339, 342);
         desktopPane.add(updateFrame, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         fileMenu.setMnemonic('f');
@@ -2684,7 +2764,10 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    up4dar_configurator.JIpTextField DNS_IP1;
+    up4dar_configurator.JIpTextField DNS_IP2;
     javax.swing.JButton ExitButton;
+    up4dar_configurator.JIpTextField NTP_IP;
     javax.swing.JMenuItem aboutMenuItem;
     javax.swing.JPanel audioPanel;
     javax.swing.JSlider backlightSlider;
@@ -2711,6 +2794,7 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
     javax.swing.JMenu editMenu;
     javax.swing.JMenuItem exitMenuItem;
     javax.swing.JMenu fileMenu;
+    up4dar_configurator.JIpTextField gwIP;
     javax.swing.JMenu helpMenu;
     javax.swing.JLabel inputVoltage;
     javax.swing.JButton jButton1;
@@ -2736,7 +2820,13 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
     javax.swing.JLabel jLabel22;
     javax.swing.JLabel jLabel23;
     javax.swing.JLabel jLabel24;
+    javax.swing.JLabel jLabel25;
+    javax.swing.JLabel jLabel26;
+    javax.swing.JLabel jLabel27;
+    javax.swing.JLabel jLabel28;
+    javax.swing.JLabel jLabel29;
     javax.swing.JLabel jLabel3;
+    javax.swing.JLabel jLabel30;
     javax.swing.JLabel jLabel4;
     javax.swing.JLabel jLabel5;
     javax.swing.JLabel jLabel6;
@@ -2753,7 +2843,10 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
     javax.swing.JLabel loadProgressLabel;
     javax.swing.JInternalFrame loadingFrame;
     javax.swing.JMenuBar menuBar;
+    up4dar_configurator.JIpTextField myIP;
+    up4dar_configurator.JIpTextField netmaskIP;
     javax.swing.JInternalFrame networkListFrame;
+    javax.swing.JPanel networkPanel;
     javax.swing.JMenuItem openMenuItem;
     javax.swing.JMenuItem pasteMenuItem;
     javax.swing.JPanel phyPanel;
