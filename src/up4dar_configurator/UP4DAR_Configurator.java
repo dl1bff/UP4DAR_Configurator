@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2012 Michael Dirska <dl1bff@mdx.de>
+ * Copyright (C) 2013 Michael Dirska <dl1bff@mdx.de>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -34,6 +34,7 @@ import javax.swing.table.TableModel;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JCheckBox;
 
 /**
  *
@@ -268,6 +269,9 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
+        useAltDNS = new javax.swing.JCheckBox();
+        enableNTP = new javax.swing.JCheckBox();
+        useOnlyTenMBit = new javax.swing.JCheckBox();
         ExitButton = new javax.swing.JButton();
         saveToFlash = new javax.swing.JButton();
         loadingFrame = new javax.swing.JInternalFrame();
@@ -343,13 +347,13 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
             networkListFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(networkListFrameLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(boardListScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
+                .addComponent(boardListScrollPane)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(connectButton)
                 .addContainerGap())
         );
 
-        networkListFrame.setBounds(10, 10, 320, 198);
+        networkListFrame.setBounds(10, 10, 320, 214);
         desktopPane.add(networkListFrame, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         configFrame.setNormalBounds(new java.awt.Rectangle(10, 15, 880, 372));
@@ -1276,6 +1280,27 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
 
         jLabel30.setText("NTP server");
 
+        useAltDNS.setText("use alternative DNS domain for DCS");
+        useAltDNS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                useAltDNSActionPerformed(evt);
+            }
+        });
+
+        enableNTP.setText("enable NTP");
+        enableNTP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                enableNTPActionPerformed(evt);
+            }
+        });
+
+        useOnlyTenMBit.setText("use only 10 MBit/s");
+        useOnlyTenMBit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                useOnlyTenMBitActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout networkPanelLayout = new javax.swing.GroupLayout(networkPanel);
         networkPanel.setLayout(networkPanelLayout);
         networkPanelLayout.setHorizontalGroup(
@@ -1291,25 +1316,36 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                     .addComponent(jLabel30))
                 .addGap(18, 18, 18)
                 .addGroup(networkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(netmaskIP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(myIP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(gwIP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(DNS_IP1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(DNS_IP2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(NTP_IP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(618, Short.MAX_VALUE))
+                    .addGroup(networkPanelLayout.createSequentialGroup()
+                        .addComponent(NTP_IP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(enableNTP))
+                    .addGroup(networkPanelLayout.createSequentialGroup()
+                        .addGroup(networkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(myIP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(netmaskIP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(129, 129, 129)
+                        .addGroup(networkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(useAltDNS)
+                            .addComponent(useOnlyTenMBit))))
+                .addContainerGap(292, Short.MAX_VALUE))
         );
         networkPanelLayout.setVerticalGroup(
             networkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(networkPanelLayout.createSequentialGroup()
-                .addGap(37, 37, 37)
+                .addGap(36, 36, 36)
                 .addGroup(networkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel25)
-                    .addComponent(myIP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(myIP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(useAltDNS))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(networkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(netmaskIP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel26))
+                    .addComponent(jLabel26)
+                    .addComponent(useOnlyTenMBit))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(networkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(gwIP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1325,8 +1361,9 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(networkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel30)
-                    .addComponent(NTP_IP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(88, Short.MAX_VALUE))
+                    .addComponent(NTP_IP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(enableNTP))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Network", networkPanel);
@@ -1402,10 +1439,10 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                 .addComponent(loadProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(loadCancelButton)
-                .addContainerGap(89, Short.MAX_VALUE))
+                .addContainerGap(105, Short.MAX_VALUE))
         );
 
-        loadingFrame.setBounds(200, 200, 340, 196);
+        loadingFrame.setBounds(200, 200, 340, 212);
         desktopPane.add(loadingFrame, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         updateFrame.setTitle("Firmware Update");
@@ -1446,10 +1483,10 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                         .addComponent(updateProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(updateLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
-        updateFrame.setBounds(90, 300, 335, 219);
+        updateFrame.setBounds(90, 300, 335, 235);
         desktopPane.add(updateFrame, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         fileMenu.setMnemonic('f');
@@ -2083,12 +2120,15 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
         }
     }//GEN-LAST:event_contrastSliderStateChanged
 
-    private void dprsEnableCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dprsEnableCheckBoxActionPerformed
+    
+    
+    private void setCheckBox(JCheckBox cb, String snmpvar)
+    {
         try
         {
             int value;
             
-            if (dprsEnableCheckBox.isSelected())
+            if (cb.isSelected())
             {
                 value = 1;
             }
@@ -2097,7 +2137,7 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                 value = 0;
             }
             
-            snmp.snmpSetInteger("810", value);
+            snmp.snmpSetInteger(snmpvar, value);
      
         } catch (Exception ex)
         {
@@ -2106,12 +2146,19 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
         
         try
         {
-            dprsEnableCheckBox.setSelected(snmp.snmpGetInteger("810") == 1);
+            cb.setSelected(snmp.snmpGetInteger(snmpvar) == 1);
                     
         } catch (Exception ex)
         {
             Logger.getLogger(UP4DAR_Configurator.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    
+    private void dprsEnableCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dprsEnableCheckBoxActionPerformed
+       
+        setCheckBox(dprsEnableCheckBox, "810");
+        
     }//GEN-LAST:event_dprsEnableCheckBoxActionPerformed
 
     private void dprsSymbolComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_dprsSymbolComboBoxItemStateChanged
@@ -2499,6 +2546,21 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
         NTP_IPActionPerformed(null);
     }//GEN-LAST:event_NTP_IPFocusLost
 
+    private void enableNTPActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_enableNTPActionPerformed
+    {//GEN-HEADEREND:event_enableNTPActionPerformed
+        setCheckBox(enableNTP, "1770");
+    }//GEN-LAST:event_enableNTPActionPerformed
+
+    private void useOnlyTenMBitActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_useOnlyTenMBitActionPerformed
+    {//GEN-HEADEREND:event_useOnlyTenMBitActionPerformed
+        setCheckBox(useOnlyTenMBit, "1780");
+    }//GEN-LAST:event_useOnlyTenMBitActionPerformed
+
+    private void useAltDNSActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_useAltDNSActionPerformed
+    {//GEN-HEADEREND:event_useAltDNSActionPerformed
+        setCheckBox(useAltDNS, "1790");
+    }//GEN-LAST:event_useAltDNSActionPerformed
+
     
     
     void initTableListener()
@@ -2569,6 +2631,15 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                 NTP_IP.setIpAddress(InetAddress.getByAddress(
                         snmp.snmpGetBinaryString("1760")));
                 progIncr(); 
+                
+                enableNTP.setSelected(snmp.snmpGetInteger("1770") == 1);
+                progIncr();
+
+                useOnlyTenMBit.setSelected(snmp.snmpGetInteger("1780") == 1);
+                progIncr();
+
+                useAltDNS.setSelected(snmp.snmpGetInteger("1790") == 1);
+                progIncr();
             }
             catch (Exception e)
             {
@@ -2961,6 +3032,7 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
     javax.swing.JTextField dprsTextField;
     javax.swing.JPanel dvPanel;
     javax.swing.JMenu editMenu;
+    javax.swing.JCheckBox enableNTP;
     javax.swing.JMenuItem exitMenuItem;
     javax.swing.JMenu fileMenu;
     up4dar_configurator.JIpTextField gwIP;
@@ -3051,6 +3123,8 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
     javax.swing.JMenuItem updateMenuItem;
     javax.swing.JButton updateOKButton;
     javax.swing.JProgressBar updateProgressBar;
+    javax.swing.JCheckBox useAltDNS;
+    javax.swing.JCheckBox useOnlyTenMBit;
     javax.swing.JPanel yourCallSettingsPanel;
     javax.swing.JSpinner yourCallSpinner;
     javax.swing.JTable yourCallTable;
