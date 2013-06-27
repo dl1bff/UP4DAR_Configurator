@@ -46,7 +46,7 @@ import javax.swing.JCheckBox;
 public class UP4DAR_Configurator extends javax.swing.JFrame 
 {
 
-    public final String version = "C.1.00.08";
+    public final String version = "C.1.00.09e";
     
     public String getMainWindowTitle()
     {
