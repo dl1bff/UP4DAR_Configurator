@@ -46,7 +46,7 @@ import javax.swing.JCheckBox;
 public class UP4DAR_Configurator extends javax.swing.JFrame 
 {
 
-    public final String version = "C.1.00.09e";
+    public final String version = "C.1.00.10e";
     
     public String getMainWindowTitle()
     {
@@ -172,7 +172,8 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         updateFileChooser = new javax.swing.JFileChooser();
         desktopPane = new javax.swing.JDesktopPane();
@@ -315,8 +316,10 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
 
         boardList.setModel(bcRX);
         boardList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        boardList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
-            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+        boardList.addListSelectionListener(new javax.swing.event.ListSelectionListener()
+        {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt)
+            {
                 boardListValueChanged(evt);
             }
         });
@@ -324,8 +327,10 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
 
         connectButton.setText("Connect");
         connectButton.setEnabled(false);
-        connectButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        connectButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 connectButtonActionPerformed(evt);
             }
         });
@@ -353,8 +358,8 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                 .addContainerGap())
         );
 
+        desktopPane.add(networkListFrame);
         networkListFrame.setBounds(10, 10, 320, 214);
-        desktopPane.add(networkListFrame, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         configFrame.setNormalBounds(new java.awt.Rectangle(10, 15, 880, 372));
         configFrame.setPreferredSize(new java.awt.Dimension(880, 372));
@@ -362,13 +367,17 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
 
         callSign.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         callSign.setText("NOCALL");
-        callSign.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        callSign.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 callSignActionPerformed(evt);
             }
         });
-        callSign.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
+        callSign.addFocusListener(new java.awt.event.FocusAdapter()
+        {
+            public void focusLost(java.awt.event.FocusEvent evt)
+            {
                 callSignFocusLost(evt);
             }
         });
@@ -379,13 +388,17 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
 
         callSignExt.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         callSignExt.setText("jTextField1");
-        callSignExt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        callSignExt.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 callSignExtActionPerformed(evt);
             }
         });
-        callSignExt.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
+        callSignExt.addFocusListener(new java.awt.event.FocusAdapter()
+        {
+            public void focusLost(java.awt.event.FocusEvent evt)
+            {
                 callSignExtFocusLost(evt);
             }
         });
@@ -424,8 +437,10 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
         rptSettingsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Repeater"));
 
         rptSpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, 5, 1));
-        rptSpinner.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+        rptSpinner.addChangeListener(new javax.swing.event.ChangeListener()
+        {
+            public void stateChanged(javax.swing.event.ChangeEvent evt)
+            {
                 rptSpinnerStateChanged(evt);
             }
         });
@@ -434,40 +449,52 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
 
         rptTable.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         rptTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+            new Object [][]
+            {
                 { new Integer(1), "DB0DF  B", "DB0DF  G"},
                 { new Integer(2), "DB0DOS B", "DB0DOS G"},
                 { new Integer(3), null, null},
                 { new Integer(4), null, null},
                 { new Integer(5), null, null}
             },
-            new String [] {
+            new String []
+            {
                 "#", "RPT1", "RPT2"
             }
-        ) {
-            Class[] types = new Class [] {
+        )
+        {
+            Class[] types = new Class []
+            {
                 java.lang.Integer.class, java.lang.String.class, java.lang.String.class
             };
-            boolean[] canEdit = new boolean [] {
+            boolean[] canEdit = new boolean []
+            {
                 false, true, true
             };
 
-            public Class getColumnClass(int columnIndex) {
+            public Class getColumnClass(int columnIndex)
+            {
                 return types [columnIndex];
             }
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
+            public boolean isCellEditable(int rowIndex, int columnIndex)
+            {
                 return canEdit [columnIndex];
             }
         });
         rptTable.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(rptTable);
-        rptTable.getColumnModel().getColumn(0).setResizable(false);
-        rptTable.getColumnModel().getColumn(0).setPreferredWidth(8);
+        if (rptTable.getColumnModel().getColumnCount() > 0)
+        {
+            rptTable.getColumnModel().getColumn(0).setResizable(false);
+            rptTable.getColumnModel().getColumn(0).setPreferredWidth(8);
+        }
 
         rptDirectCheckbox.setText("direct QSO (don't use repeater)");
-        rptDirectCheckbox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        rptDirectCheckbox.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 rptDirectCheckboxActionPerformed(evt);
             }
         });
@@ -504,8 +531,10 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
         yourCallSettingsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("YOUR Call"));
 
         yourCallSpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, 10, 1));
-        yourCallSpinner.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+        yourCallSpinner.addChangeListener(new javax.swing.event.ChangeListener()
+        {
+            public void stateChanged(javax.swing.event.ChangeEvent evt)
+            {
                 yourCallSpinnerStateChanged(evt);
             }
         });
@@ -514,7 +543,8 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
 
         yourCallTable.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         yourCallTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+            new Object [][]
+            {
                 { new Integer(1), "CQCQCQ"},
                 { new Integer(2), ""},
                 { new Integer(3), null},
@@ -526,29 +556,38 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                 { new Integer(9), null},
                 {null, null}
             },
-            new String [] {
+            new String []
+            {
                 "#", "YOUR Call"
             }
-        ) {
-            Class[] types = new Class [] {
+        )
+        {
+            Class[] types = new Class []
+            {
                 java.lang.Integer.class, java.lang.String.class
             };
-            boolean[] canEdit = new boolean [] {
+            boolean[] canEdit = new boolean []
+            {
                 false, true
             };
 
-            public Class getColumnClass(int columnIndex) {
+            public Class getColumnClass(int columnIndex)
+            {
                 return types [columnIndex];
             }
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
+            public boolean isCellEditable(int rowIndex, int columnIndex)
+            {
                 return canEdit [columnIndex];
             }
         });
         yourCallTable.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(yourCallTable);
-        yourCallTable.getColumnModel().getColumn(0).setResizable(false);
-        yourCallTable.getColumnModel().getColumn(0).setPreferredWidth(8);
+        if (yourCallTable.getColumnModel().getColumnCount() > 0)
+        {
+            yourCallTable.getColumnModel().getColumn(0).setResizable(false);
+            yourCallTable.getColumnModel().getColumn(0).setPreferredWidth(8);
+        }
 
         javax.swing.GroupLayout yourCallSettingsPanelLayout = new javax.swing.GroupLayout(yourCallSettingsPanel);
         yourCallSettingsPanel.setLayout(yourCallSettingsPanelLayout);
@@ -577,13 +616,17 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
         );
 
         txmsgTextField.setText("jTextField1");
-        txmsgTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        txmsgTextField.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 txmsgTextFieldActionPerformed(evt);
             }
         });
-        txmsgTextField.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
+        txmsgTextField.addFocusListener(new java.awt.event.FocusAdapter()
+        {
+            public void focusLost(java.awt.event.FocusEvent evt)
+            {
                 txmsgTextFieldFocusLost(evt);
             }
         });
@@ -626,13 +669,17 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
         jLabel3.setText("TxDelay");
 
         phyTxDelay.setText("jTextField1");
-        phyTxDelay.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        phyTxDelay.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 phyTxDelayActionPerformed(evt);
             }
         });
-        phyTxDelay.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
+        phyTxDelay.addFocusListener(new java.awt.event.FocusAdapter()
+        {
+            public void focusLost(java.awt.event.FocusEvent evt)
+            {
                 phyTxDelayFocusLost(evt);
             }
         });
@@ -640,13 +687,17 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
         jLabel4.setText("TxGain");
 
         phyTxGain.setText("jTextField1");
-        phyTxGain.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        phyTxGain.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 phyTxGainActionPerformed(evt);
             }
         });
-        phyTxGain.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
+        phyTxGain.addFocusListener(new java.awt.event.FocusAdapter()
+        {
+            public void focusLost(java.awt.event.FocusEvent evt)
+            {
                 phyTxGainFocusLost(evt);
             }
         });
@@ -654,20 +705,26 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
         jLabel5.setText("TxDcShift");
 
         phyRxInv.setText("RxInv");
-        phyRxInv.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        phyRxInv.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 phyRxInvActionPerformed(evt);
             }
         });
 
         phyTxDcShift.setText("jTextField1");
-        phyTxDcShift.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        phyTxDcShift.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 phyTxDcShiftActionPerformed(evt);
             }
         });
-        phyTxDcShift.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
+        phyTxDcShift.addFocusListener(new java.awt.event.FocusAdapter()
+        {
+            public void focusLost(java.awt.event.FocusEvent evt)
+            {
                 phyTxDcShiftFocusLost(evt);
             }
         });
@@ -677,13 +734,17 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
         jLabel10.setText("RxDeviation");
 
         phyRxDevFactor.setText("jTextField1");
-        phyRxDevFactor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        phyRxDevFactor.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 phyRxDevFactorActionPerformed(evt);
             }
         });
-        phyRxDevFactor.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
+        phyRxDevFactor.addFocusListener(new java.awt.event.FocusAdapter()
+        {
+            public void focusLost(java.awt.event.FocusEvent evt)
+            {
                 phyRxDevFactorFocusLost(evt);
             }
         });
@@ -762,13 +823,17 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
         jLabel6.setText("Frequency");
 
         pttBeepFrequency.setText("jTextField1");
-        pttBeepFrequency.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        pttBeepFrequency.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 pttBeepFrequencyActionPerformed(evt);
             }
         });
-        pttBeepFrequency.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
+        pttBeepFrequency.addFocusListener(new java.awt.event.FocusAdapter()
+        {
+            public void focusLost(java.awt.event.FocusEvent evt)
+            {
                 pttBeepFrequencyFocusLost(evt);
             }
         });
@@ -776,13 +841,17 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
         jLabel7.setText("Duration");
 
         pttBeepDuration.setText("jTextField1");
-        pttBeepDuration.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        pttBeepDuration.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 pttBeepDurationActionPerformed(evt);
             }
         });
-        pttBeepDuration.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
+        pttBeepDuration.addFocusListener(new java.awt.event.FocusAdapter()
+        {
+            public void focusLost(java.awt.event.FocusEvent evt)
+            {
                 pttBeepDurationFocusLost(evt);
             }
         });
@@ -790,13 +859,17 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
         jLabel8.setText("Volume");
 
         pttBeepVolume.setText("jTextField2");
-        pttBeepVolume.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        pttBeepVolume.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 pttBeepVolumeActionPerformed(evt);
             }
         });
-        pttBeepVolume.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
+        pttBeepVolume.addFocusListener(new java.awt.event.FocusAdapter()
+        {
+            public void focusLost(java.awt.event.FocusEvent evt)
+            {
                 pttBeepVolumeFocusLost(evt);
             }
         });
@@ -840,13 +913,17 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
         jLabel15.setText("Frequency");
 
         standbyBeepFrequency.setText("jTextField1");
-        standbyBeepFrequency.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        standbyBeepFrequency.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 standbyBeepFrequencyActionPerformed(evt);
             }
         });
-        standbyBeepFrequency.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
+        standbyBeepFrequency.addFocusListener(new java.awt.event.FocusAdapter()
+        {
+            public void focusLost(java.awt.event.FocusEvent evt)
+            {
                 standbyBeepFrequencyFocusLost(evt);
             }
         });
@@ -854,13 +931,17 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
         jLabel16.setText("Duration");
 
         standbyBeepDuration.setText("jTextField1");
-        standbyBeepDuration.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        standbyBeepDuration.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 standbyBeepDurationActionPerformed(evt);
             }
         });
-        standbyBeepDuration.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
+        standbyBeepDuration.addFocusListener(new java.awt.event.FocusAdapter()
+        {
+            public void focusLost(java.awt.event.FocusEvent evt)
+            {
                 standbyBeepDurationFocusLost(evt);
             }
         });
@@ -868,13 +949,17 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
         jLabel17.setText("Volume");
 
         standbyBeepVolume.setText("jTextField2");
-        standbyBeepVolume.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        standbyBeepVolume.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 standbyBeepVolumeActionPerformed(evt);
             }
         });
-        standbyBeepVolume.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
+        standbyBeepVolume.addFocusListener(new java.awt.event.FocusAdapter()
+        {
+            public void focusLost(java.awt.event.FocusEvent evt)
+            {
                 standbyBeepVolumeFocusLost(evt);
             }
         });
@@ -937,15 +1022,19 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
         jTabbedPane1.addTab("Audio", audioPanel);
 
         dprsEnableCheckBox.setText("enable outgoing D-PRS Messages");
-        dprsEnableCheckBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        dprsEnableCheckBox.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 dprsEnableCheckBoxActionPerformed(evt);
             }
         });
 
         dprsSymbolComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Jogger", "Car", "House", "Boat", "Bicycle", "Van" }));
-        dprsSymbolComboBox.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+        dprsSymbolComboBox.addItemListener(new java.awt.event.ItemListener()
+        {
+            public void itemStateChanged(java.awt.event.ItemEvent evt)
+            {
                 dprsSymbolComboBoxItemStateChanged(evt);
             }
         });
@@ -953,13 +1042,17 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
         jLabel13.setText("D-PRS symbol");
 
         dprsTextField.setText("jTextField1");
-        dprsTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        dprsTextField.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 dprsTextFieldActionPerformed(evt);
             }
         });
-        dprsTextField.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
+        dprsTextField.addFocusListener(new java.awt.event.FocusAdapter()
+        {
+            public void focusLost(java.awt.event.FocusEvent evt)
+            {
                 dprsTextFieldFocusLost(evt);
             }
         });
@@ -1002,14 +1095,18 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
 
         jTabbedPane1.addTab("D-PRS", dprsPanel);
 
-        backlightSlider.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+        backlightSlider.addChangeListener(new javax.swing.event.ChangeListener()
+        {
+            public void stateChanged(javax.swing.event.ChangeEvent evt)
+            {
                 backlightSliderStateChanged(evt);
             }
         });
 
-        contrastSlider.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+        contrastSlider.addChangeListener(new javax.swing.event.ChangeListener()
+        {
+            public void stateChanged(javax.swing.event.ChangeEvent evt)
+            {
                 contrastSliderStateChanged(evt);
             }
         });
@@ -1021,57 +1118,73 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
         remoteDisplayLabel.setToolTipText("");
 
         jButton1.setText("key1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButton1ActionPerformed(evt);
             }
         });
 
         jButton2.setText("key2");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton2.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButton2ActionPerformed(evt);
             }
         });
 
         jButton3.setText("key3");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton3.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButton3ActionPerformed(evt);
             }
         });
 
         jButton4.setText("key4");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton4.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButton4ActionPerformed(evt);
             }
         });
 
         jButton5.setText("key5");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton5.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButton5ActionPerformed(evt);
             }
         });
 
         jButton6.setText("key6");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton6.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButton6ActionPerformed(evt);
             }
         });
 
         remoteScreenRefreshRateSlider.setMinimum(1);
-        remoteScreenRefreshRateSlider.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+        remoteScreenRefreshRateSlider.addChangeListener(new javax.swing.event.ChangeListener()
+        {
+            public void stateChanged(javax.swing.event.ChangeEvent evt)
+            {
                 remoteScreenRefreshRateSliderStateChanged(evt);
             }
         });
 
-        remoteScreenComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Main", "GPS", "Reflector", "Debug", "Audio" }));
-        remoteScreenComboBox.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+        remoteScreenComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Main", "GPS", "Reflector", "Debug", "Audio", "DVSet", "RMUSet" }));
+        remoteScreenComboBox.addItemListener(new java.awt.event.ItemListener()
+        {
+            public void itemStateChanged(java.awt.event.ItemEvent evt)
+            {
                 remoteScreenComboBoxItemStateChanged(evt);
             }
         });
@@ -1202,68 +1315,92 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
 
         jTabbedPane1.addTab("Debug", debugPanel);
 
-        myIP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        myIP.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 myIPActionPerformed(evt);
             }
         });
-        myIP.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
+        myIP.addFocusListener(new java.awt.event.FocusAdapter()
+        {
+            public void focusLost(java.awt.event.FocusEvent evt)
+            {
                 myIPFocusLost(evt);
             }
         });
 
-        netmaskIP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        netmaskIP.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 netmaskIPActionPerformed(evt);
             }
         });
-        netmaskIP.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
+        netmaskIP.addFocusListener(new java.awt.event.FocusAdapter()
+        {
+            public void focusLost(java.awt.event.FocusEvent evt)
+            {
                 netmaskIPFocusLost(evt);
             }
         });
 
-        gwIP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        gwIP.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 gwIPActionPerformed(evt);
             }
         });
-        gwIP.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
+        gwIP.addFocusListener(new java.awt.event.FocusAdapter()
+        {
+            public void focusLost(java.awt.event.FocusEvent evt)
+            {
                 gwIPFocusLost(evt);
             }
         });
 
-        DNS_IP1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        DNS_IP1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 DNS_IP1ActionPerformed(evt);
             }
         });
-        DNS_IP1.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
+        DNS_IP1.addFocusListener(new java.awt.event.FocusAdapter()
+        {
+            public void focusLost(java.awt.event.FocusEvent evt)
+            {
                 DNS_IP1FocusLost(evt);
             }
         });
 
-        DNS_IP2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        DNS_IP2.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 DNS_IP2ActionPerformed(evt);
             }
         });
-        DNS_IP2.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
+        DNS_IP2.addFocusListener(new java.awt.event.FocusAdapter()
+        {
+            public void focusLost(java.awt.event.FocusEvent evt)
+            {
                 DNS_IP2FocusLost(evt);
             }
         });
 
-        NTP_IP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        NTP_IP.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 NTP_IPActionPerformed(evt);
             }
         });
-        NTP_IP.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
+        NTP_IP.addFocusListener(new java.awt.event.FocusAdapter()
+        {
+            public void focusLost(java.awt.event.FocusEvent evt)
+            {
                 NTP_IPFocusLost(evt);
             }
         });
@@ -1281,22 +1418,28 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
         jLabel30.setText("NTP server");
 
         useAltDNS.setText("use alternative DNS domain for DCS");
-        useAltDNS.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        useAltDNS.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 useAltDNSActionPerformed(evt);
             }
         });
 
         enableNTP.setText("enable NTP");
-        enableNTP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        enableNTP.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 enableNTPActionPerformed(evt);
             }
         });
 
         useOnlyTenMBit.setText("use only 10 MBit/s");
-        useOnlyTenMBit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        useOnlyTenMBit.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 useOnlyTenMBitActionPerformed(evt);
             }
         });
@@ -1369,15 +1512,19 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
         jTabbedPane1.addTab("Network", networkPanel);
 
         ExitButton.setText("Exit");
-        ExitButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        ExitButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 ExitButtonActionPerformed(evt);
             }
         });
 
         saveToFlash.setText("Save to Flash Memory");
-        saveToFlash.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        saveToFlash.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 saveToFlashActionPerformed(evt);
             }
         });
@@ -1405,8 +1552,8 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        desktopPane.add(configFrame);
         configFrame.setBounds(10, 15, 880, 372);
-        desktopPane.add(configFrame, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         loadingFrame.setVisible(false);
 
@@ -1442,8 +1589,8 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                 .addContainerGap(105, Short.MAX_VALUE))
         );
 
+        desktopPane.add(loadingFrame);
         loadingFrame.setBounds(200, 200, 340, 212);
-        desktopPane.add(loadingFrame, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         updateFrame.setTitle("Firmware Update");
         updateFrame.setVisible(false);
@@ -1451,8 +1598,10 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
         updateLabel1.setText("Transferring file to UP4DAR board...");
 
         updateOKButton.setText("OK");
-        updateOKButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        updateOKButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 updateOKButtonActionPerformed(evt);
             }
         });
@@ -1486,8 +1635,8 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
+        desktopPane.add(updateFrame);
         updateFrame.setBounds(90, 300, 335, 235);
-        desktopPane.add(updateFrame, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         fileMenu.setMnemonic('f');
         fileMenu.setText("File");
@@ -1510,8 +1659,10 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
 
         updateMenuItem.setText("Firmware Update");
         updateMenuItem.setEnabled(false);
-        updateMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        updateMenuItem.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 updateMenuItemActionPerformed(evt);
             }
         });
@@ -1519,8 +1670,10 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
 
         exitMenuItem.setMnemonic('x');
         exitMenuItem.setText("Exit");
-        exitMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        exitMenuItem.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 exitMenuItemActionPerformed(evt);
             }
         });
@@ -1559,8 +1712,10 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
         contentMenuItem.setMnemonic('c');
         contentMenuItem.setText("Contents");
         contentMenuItem.setEnabled(false);
-        contentMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        contentMenuItem.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 contentMenuItemActionPerformed(evt);
             }
         });
@@ -2395,7 +2550,9 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
       "18220",  // GPS
       "18230",  // Reflector
       "18240",  // Debug
-      "18260"   // Audio
+      "18260",  // Audio
+      "18270",  // DVSet
+      "18280"   // RMUSet
    };
     
     static final String remoteDisplayScreens[] = {
@@ -2404,7 +2561,9 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
       "18120",  // GPS
       "18130",  // Reflector
       "18140",  // Debug
-      "18160"   // Audio
+      "18160",  // Audio
+      "18170",  // DVSet
+      "18180"   // RMUSet
    };
     
     private void remoteScreenComboBoxItemStateChanged(java.awt.event.ItemEvent evt)//GEN-FIRST:event_remoteScreenComboBoxItemStateChanged
