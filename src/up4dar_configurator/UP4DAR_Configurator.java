@@ -1180,7 +1180,7 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
             }
         });
 
-        remoteScreenComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Main", "GPS", "Reflector", "Debug", "Audio", "DVSet", "RMUSet" }));
+        remoteScreenComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Main", "GPS", "Reflector", "Debug", "Audio", "RMUSet", "NodeInfo" }));
         remoteScreenComboBox.addItemListener(new java.awt.event.ItemListener()
         {
             public void itemStateChanged(java.awt.event.ItemEvent evt)
@@ -2551,8 +2551,8 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
       "18230",  // Reflector
       "18240",  // Debug
       "18260",  // Audio
-      "18270",  // DVSet
-      "18280"   // RMUSet
+      "18280",  // RMUSet
+      "18290"   // NodeInfo
    };
     
     static final String remoteDisplayScreens[] = {
@@ -2562,8 +2562,8 @@ public class UP4DAR_Configurator extends javax.swing.JFrame
       "18130",  // Reflector
       "18140",  // Debug
       "18160",  // Audio
-      "18170",  // DVSet
-      "18180"   // RMUSet
+      "18180",  // RMUSet
+      "18190"   // NodeInfo
    };
     
     private void remoteScreenComboBoxItemStateChanged(java.awt.event.ItemEvent evt)//GEN-FIRST:event_remoteScreenComboBoxItemStateChanged

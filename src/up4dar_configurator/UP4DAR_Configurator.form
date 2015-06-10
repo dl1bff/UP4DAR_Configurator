@@ -1396,8 +1396,8 @@
                             <StringItem index="2" value="Reflector"/>
                             <StringItem index="3" value="Debug"/>
                             <StringItem index="4" value="Audio"/>
-                            <StringItem index="5" value="DVSet"/>
-                            <StringItem index="6" value="RMUSet"/>
+                            <StringItem index="5" value="RMUSet"/>
+                            <StringItem index="6" value="NodeInfo"/>
                           </StringArray>
                         </Property>
                       </Properties>
